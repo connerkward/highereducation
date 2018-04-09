@@ -6,7 +6,7 @@ public class TouchController : MonoBehaviour {
     public OVRInput.Controller controller;
     // Use this for initialization
     void Start() {
-        transform.localPosition = OVRInput.GetLocalControllerPosition(controller);
+        transform.position = OVRInput.GetLocalControllerPosition(controller);
         transform.localRotation = OVRInput.GetLocalControllerRotation(controller);
     }
 
