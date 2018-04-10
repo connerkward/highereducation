@@ -7,11 +7,10 @@ public class TouchController : MonoBehaviour {
     // Use this for initialization
     void Start() {
         transform.position = OVRInput.GetLocalControllerPosition(controller);
-        transform.localRotation = OVRInput.GetLocalControllerRotation(controller);
     }
 
     // Update is called once per frame
     void Update() {
-
+		transform.position = OVRInput.GetLocalControllerPosition(controller);
     }
 }
