@@ -11,6 +11,7 @@ public class ControllerInputHandler : MonoBehaviour {
     private float rightAverageSpeed;
     private float rightTotalSpeed;
     public float averageSpeed;
+	public float multiplier;
     public static ControllerInputHandler instance;
 	// Use this for initialization
 	void Start () {
@@ -28,10 +29,12 @@ public class ControllerInputHandler : MonoBehaviour {
     }
 
     private float CalculateSpeed() {
-        //float leftCurrentSpeed = Mathf.Abs(OVRInput.GetLocalControllerVelocity(leftController).magnitude);
-        //float rightCurrentSpeed = Mathf.Abs(OVRInput.GetLocalControllerVelocity(rightController).magnitude);
-        float leftCurrentSpeed = Input.GetKey(KeyCode.A) ? 3 : 0;
-        float rightCurrentSpeed = Input.GetKey(KeyCode.D) ? 3 : 0;
+        float leftCurrentSpeed = multiplier* Mathf.Abs(OVRInput.GetLocalControllerVelocity(leftController).magnitude);
+        float rightCurrentSpeed = multiplier*Mathf.Abs(OVRInput.GetLocalControllerVelocity(rightController).magnitude);
+		Debug.Log (leftCurrentSpeed);
+		Debug.Log (rightCurrentSpeed);
+        //float leftCurrentSpeed = Input.GetKey(KeyCode.A) ? 3 : 0;
+        //float rightCurrentSpeed = Input.GetKey(KeyCode.D) ? 3 : 0;
         leftTotalSpeed += leftCurrentSpeed;
         rightTotalSpeed += rightCurrentSpeed;
         frames++;

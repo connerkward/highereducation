@@ -28,7 +28,7 @@ public class MusicController : MonoBehaviour {
     }
 
     float UpdateVolume(float mean) {
-        return (2 / Mathf.Sqrt(2 * Mathf.PI)) * Mathf.Pow((float)Math.E, -32 * (Mathf.Pow(ControllerInputHandler.instance.averageSpeed - mean, 2)));
+        return (2 / Mathf.Sqrt(2 * Mathf.PI)) * Mathf.Pow((float)Math.E, -64 * (Mathf.Pow(ControllerInputHandler.instance.averageSpeed - mean, 2)));
     }
 
     IEnumerator IntroFade() {
