@@ -10,8 +10,7 @@ public class ControllerInputHandler : MonoBehaviour {
     private float leftTotalSpeed;
     private float rightAverageSpeed;
     private float rightTotalSpeed;
-    public float averageSpeed;
-	public float multiplier;
+    public float speed;
     public static ControllerInputHandler instance;
 	// Use this for initialization
 	void Start () {
@@ -24,26 +23,35 @@ public class ControllerInputHandler : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        averageSpeed = CalculateSpeed();
+	void FixedUpdate () {
+		AdjustSpeed ();
     }
-
-    private float CalculateSpeed() {
-        float leftCurrentSpeed = multiplier* Mathf.Abs(OVRInput.GetLocalControllerVelocity(leftController).magnitude);
-        float rightCurrentSpeed = multiplier*Mathf.Abs(OVRInput.GetLocalControllerVelocity(rightController).magnitude);
-		Debug.Log (leftCurrentSpeed);
-		Debug.Log (rightCurrentSpeed);
-        //float leftCurrentSpeed = Input.GetKey(KeyCode.A) ? 3 : 0;
-        //float rightCurrentSpeed = Input.GetKey(KeyCode.D) ? 3 : 0;
-        leftTotalSpeed += leftCurrentSpeed;
-        rightTotalSpeed += rightCurrentSpeed;
-        frames++;
-        leftAverageSpeed = leftTotalSpeed / frames;
-        rightAverageSpeed = rightTotalSpeed / frames;
-        leftAverageSpeed = Mathf.Clamp01(leftAverageSpeed);
-        rightAverageSpeed = Mathf.Clamp01(rightAverageSpeed);
-        Debug.Log("Left Average Speed: " + leftAverageSpeed);
-        Debug.Log("Right Average Speed: " + rightAverageSpeed);
-        return (leftAverageSpeed + rightAverageSpeed) / 2;
-    }
+//
+//    private float CalculateSpeed() {
+//		float leftCurrentSpeed = Mathf.Abs(OVRInput.GetLocalControllerVelocity(leftController).magnitude);
+//		float rightCurrentSpeed = Mathf.Abs(OVRInput.GetLocalControllerVelocity(rightController).magnitude);
+//		float averageCurrentSpeed = Mathf.Clamp01((leftCurrentSpeed + rightAverageSpeed) / 2);
+//		Debug.Log (rightCurrentSpeed);
+//        //float leftCurrentSpeed = Input.GetKey(KeyCode.A) ? 3 : 0;
+//        //float rightCurrentSpeed = Input.GetKey(KeyCode.D) ? 3 : 0;
+//        leftTotalSpeed += leftCurrentSpeed;
+//        rightTotalSpeed += rightCurrentSpeed;
+//        frames++;
+//        leftAverageSpeed = leftTotalSpeed / frames;
+//        rightAverageSpeed = rightTotalSpeed / frames;
+//        leftAverageSpeed = Mathf.Clamp01(leftAverageSpeed);
+//        rightAverageSpeed = Mathf.Clamp01(rightAverageSpeed);
+//		float averageSpeed = (leftAverageSpeed + rightAverageSpeed) / 2;
+//        //Debug.Log("Left Average Speed: " + leftAverageSpeed);
+//        //Debug.Log("Right Average Speed: " + rightAverageSpeed);
+//		return instantaneousWeight*averageCurrentSpeed + averageWeight*averageSpeed;
+//    }
+	private void AdjustSpeed(){
+		float leftCurrentSpeed = Mathf.Abs(OVRInput.GetLocalControllerVelocity(leftController).magnitude);
+		float rightCurrentSpeed = Mathf.Abs(OVRInput.GetLocalControllerVelocity(rightController).magnitude );
+		float averageCurrentSpeed = Mathf.Clamp01((leftCurrentSpeed + rightAverageSpeed) / 2);
+		float evaluation = Mathf.Pow (0.5f*(averageCurrentSpeed - 0.4f), 3);
+		speed += evaluation;
+		speed = Mathf.Clamp01 (speed);
+	}
 }

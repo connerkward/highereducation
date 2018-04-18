@@ -180,7 +180,7 @@ public class Weather_Controller : MonoBehaviour {
                 }
             }
         }
-        float s = ControllerInputHandler.instance.averageSpeed;
+        float s = ControllerInputHandler.instance.speed;
         if (s >= 0.16f && s < 0.5f && en_CurrWeather != WeatherType.CLOUDY) {
             ExitCurrentWeather((int)WeatherType.CLOUDY);
         } else if (s >= 0.50f && s < 0.83f && en_CurrWeather != WeatherType.RAIN) {

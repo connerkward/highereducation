@@ -53,4 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftController: 1
   rightController: 2
-  averageSpeed: 0
+  speed: 0
+  instantaneousWeight: 0.2
+  averageWeight: 0.8
