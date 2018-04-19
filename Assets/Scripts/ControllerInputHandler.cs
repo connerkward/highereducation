@@ -11,6 +11,7 @@ public class ControllerInputHandler : MonoBehaviour {
     private float rightAverageSpeed;
     private float rightTotalSpeed;
     public float speed;
+	public float mood;
     public static ControllerInputHandler instance;
 	// Use this for initialization
 	void Start () {
@@ -25,6 +26,7 @@ public class ControllerInputHandler : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		AdjustSpeed ();
+		CalculateMood ();
     }
 //
 //    private float CalculateSpeed() {
@@ -50,8 +52,14 @@ public class ControllerInputHandler : MonoBehaviour {
 		float leftCurrentSpeed = Mathf.Abs(OVRInput.GetLocalControllerVelocity(leftController).magnitude);
 		float rightCurrentSpeed = Mathf.Abs(OVRInput.GetLocalControllerVelocity(rightController).magnitude );
 		float averageCurrentSpeed = Mathf.Clamp01((leftCurrentSpeed + rightAverageSpeed) / 2);
-		float evaluation = Mathf.Pow (0.5f*(averageCurrentSpeed - 0.4f), 3);
+		float evaluation = Mathf.Pow (0.6f*(averageCurrentSpeed - 0.4f), 3);
 		speed += evaluation;
 		speed = Mathf.Clamp01 (speed);
+	}
+
+	private void CalculateMood(){
+		float evaluation = Mathf.Pow (0.1f*(speed - 0.4f), 3);
+		mood += evaluation;
+		mood = Mathf.Clamp01 (mood);
 	}
 }
