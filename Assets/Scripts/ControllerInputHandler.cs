@@ -5,6 +5,7 @@ using UnityEngine;
 public class ControllerInputHandler : MonoBehaviour {
     public OVRInput.Controller leftController;
     public OVRInput.Controller rightController;
+    public RectTransform indicator;
     private int frames;
     private float leftAverageSpeed;
     private float leftTotalSpeed;
@@ -28,6 +29,7 @@ public class ControllerInputHandler : MonoBehaviour {
 		//AdjustSpeed ();
         TestSpeed();
 		CalculateMood ();
+        UpdateIndicator();
     }
 //
 //    private float CalculateSpeed() {
@@ -49,6 +51,10 @@ public class ControllerInputHandler : MonoBehaviour {
 //        //Debug.Log("Right Average Speed: " + rightAverageSpeed);
 //		return instantaneousWeight*averageCurrentSpeed + averageWeight*averageSpeed;
 //    }
+
+    private void UpdateIndicator() {
+        indicator.anchoredPosition = new Vector2(730 * speed - 365, indicator.anchoredPosition.y);
+    }
 	private void AdjustSpeed(){
 		float leftCurrentSpeed = Mathf.Abs(OVRInput.GetLocalControllerVelocity(leftController).magnitude);
 		float rightCurrentSpeed = Mathf.Abs(OVRInput.GetLocalControllerVelocity(rightController).magnitude );
