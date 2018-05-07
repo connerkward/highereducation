@@ -25,7 +25,8 @@ public class ControllerInputHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		AdjustSpeed ();
+		//AdjustSpeed ();
+        TestSpeed();
 		CalculateMood ();
     }
 //
@@ -56,6 +57,11 @@ public class ControllerInputHandler : MonoBehaviour {
 		speed += evaluation;
 		speed = Mathf.Clamp01 (speed);
 	}
+
+    private void TestSpeed() {
+        speed += 0.001f * (Input.GetKey(KeyCode.D) ? 1 : -1);
+        speed = Mathf.Clamp01(speed);
+    }
 
 	private void CalculateMood(){
 		float evaluation = Mathf.Pow (0.1f*(speed - 0.4f), 3);
