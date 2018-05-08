@@ -54,13 +54,25 @@ public class MusicController : MonoBehaviour {
 
     void UpdateArray(AudioSource[] audioSources, float mean) {
         foreach (AudioSource audioSource in audioSources) {
-            audioSource.volume = UpdateVolume(mean);
+            audioSource.volume = BinaryTracks(mean);//UpdateVolume(mean);
             audioSource.priority = (int)Mathf.Clamp(18 / audioSource.volume - 21, 1, 256);
         }
     }
 
     float UpdateVolume(float mean) {
         return (2 / Mathf.Sqrt(2 * Mathf.PI)) * Mathf.Pow((float)Math.E, -3 * (Mathf.Pow(ControllerInputHandler.instance.speed - mean, 2)));
+    }
+
+    int BinaryTracks(float mean)
+    {
+        if(mean == 0)
+        {
+            return ControllerInputHandler.instance.speed > 0.5f ? 0 : 1;
+        } else
+        {
+            return ControllerInputHandler.instance.speed > 0.5f ? 1 : 0;
+        }
+        
     }
 
     IEnumerator IntroFade() {

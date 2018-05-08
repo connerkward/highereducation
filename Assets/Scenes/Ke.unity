@@ -207,6 +207,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1076319452
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 034f425b9bca75e47aa4f7e4b5981605, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 034f425b9bca75e47aa4f7e4b5981605, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 034f425b9bca75e47aa4f7e4b5981605, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 034f425b9bca75e47aa4f7e4b5981605, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 034f425b9bca75e47aa4f7e4b5981605, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 034f425b9bca75e47aa4f7e4b5981605, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 034f425b9bca75e47aa4f7e4b5981605, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 034f425b9bca75e47aa4f7e4b5981605, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 13700000, guid: 034f425b9bca75e47aa4f7e4b5981605, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dbc507bac58aa5a40a81d8e516e22f6d, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 034f425b9bca75e47aa4f7e4b5981605, type: 3}
+  m_IsPrefabParent: 0
 --- !u!1001 &1125941678
 Prefab:
   m_ObjectHideFlags: 0
@@ -983,13 +1029,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c57c33a57852314abaca6cd9127498f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowSlowEndTime1: 28.5
-  slowSlowEndTime2: 73.5
-  fastSlowStartTime: 29.5
-  fastSlowEndTime: 78.5
-  fastFastStartTime: 78.5
-  slowFastStartTime: 73.5
-  beginningMusicTime: 30
   DoorRotation: {fileID: 801696348}
 --- !u!4 &1515571577
 Transform:

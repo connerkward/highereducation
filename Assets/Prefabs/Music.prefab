@@ -491,9 +491,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2f4b5906ba4f74abb01bd317899765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agitato: {fileID: 82566284369002836}
-  smooth: {fileID: 82390918039887272}
-  leggiero: {fileID: 82443673994176110}
-  calm: {fileID: 82222110463718784}
+  majorMelodyGO: {fileID: 0}
+  majorCountermelodyGO: {fileID: 0}
+  majorAccompanimentGO: {fileID: 0}
+  minorMelodyGO: {fileID: 0}
+  minorCountermelodyGO: {fileID: 0}
+  minorAccompanimentGO: {fileID: 0}
   overlayImage: {fileID: 0}
   transitionTime: 2

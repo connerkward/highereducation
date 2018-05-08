@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftController: 1
   rightController: 2
+  indicator: {fileID: 0}
+  keyboardDebugMode: 0
   speed: 0
-  instantaneousWeight: 0.2
-  averageWeight: 0.8
+  mood: 0

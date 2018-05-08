@@ -6,6 +6,7 @@ public class ControllerInputHandler : MonoBehaviour {
     public OVRInput.Controller leftController;
     public OVRInput.Controller rightController;
     public RectTransform indicator;
+    public bool keyboardDebugMode;
     private int frames;
     private float leftAverageSpeed;
     private float leftTotalSpeed;
@@ -26,9 +27,16 @@ public class ControllerInputHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		//AdjustSpeed ();
-        TestSpeed();
-		CalculateMood ();
+
+        if (keyboardDebugMode)
+        {
+            TestSpeed();
+        } else
+        {
+            AdjustSpeed ();
+        }
+
+        CalculateMood ();
         UpdateIndicator();
     }
 //
@@ -62,6 +70,7 @@ public class ControllerInputHandler : MonoBehaviour {
 		float evaluation = Mathf.Pow (0.6f*(averageCurrentSpeed - 0.4f), 3);
 		speed += evaluation;
 		speed = Mathf.Clamp01 (speed);
+        Debug.Log(Vector3.Distance(OVRInput.GetLocalControllerPosition(leftController), OVRInput.GetLocalControllerPosition(rightController)));
 	}
 
     private void TestSpeed() {
