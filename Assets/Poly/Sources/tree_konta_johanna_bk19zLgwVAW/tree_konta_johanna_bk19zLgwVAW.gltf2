@@ -1,0 +1,203 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "byteOffset": 0,
+      "componentType": 5123,
+      "count": 1032,
+      "max": [
+        743.0
+      ],
+      "min": [
+        0.0
+      ],
+      "name": "buffer-0-group-0-mesh-0-indices",
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 0,
+      "componentType": 5126,
+      "count": 744,
+      "max": [
+        35.340599060058594,
+        143.07449340820312,
+        62.56629943847656
+      ],
+      "min": [
+        -41.96039962768555,
+        -0.15950000286102295,
+        -61.13650131225586
+      ],
+      "name": "buffer-0-group-0-mesh-0-position",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 8928,
+      "componentType": 5126,
+      "count": 744,
+      "max": [
+        0.9995465278625488,
+        0.9853496551513672,
+        0.9903054237365723
+      ],
+      "min": [
+        -0.999891459941864,
+        -0.9440053105354309,
+        -0.997901976108551
+      ],
+      "name": "buffer-0-group-0-mesh-0-normal",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 2064,
+      "componentType": 5123,
+      "count": 8790,
+      "max": [
+        8789.0
+      ],
+      "min": [
+        0.0
+      ],
+      "name": "buffer-0-group-1-mesh-0-indices",
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 17856,
+      "componentType": 5126,
+      "count": 8790,
+      "max": [
+        42.80379867553711,
+        149.5666961669922,
+        97.08820343017578
+      ],
+      "min": [
+        -77.84130096435547,
+        36.96699905395508,
+        -68.44249725341797
+      ],
+      "name": "buffer-0-group-1-mesh-0-position",
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 123336,
+      "componentType": 5126,
+      "count": 8790,
+      "max": [
+        0.9996325373649597,
+        0.9839360117912292,
+        0.9997128248214722
+      ],
+      "min": [
+        -0.999853253364563,
+        -0.9912097454071045,
+        -0.9999379515647888
+      ],
+      "name": "buffer-0-group-1-mesh-0-normal",
+      "type": "VEC3"
+    }
+  ],
+  "asset": {
+    "generator": "Obj2GltfConverter",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 19644,
+      "byteOffset": 0,
+      "name": "buffer-0-bufferview-ushort",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 228816,
+      "byteOffset": 19644,
+      "byteStride": 12,
+      "name": "buffer-0-bufferview-vec3",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 248460,
+      "name": "buffer-0",
+      "uri": "google poly.bin"
+    }
+  ],
+  "materials": [
+    {
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "name": "??????",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.1138,
+          0.0437,
+          0.0154,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.9050905717761354
+      }
+    },
+    {
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "name": "???????_??????",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.6393,
+          0.041,
+          0.1727,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.9050905717761354
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "buffer-0-mesh-0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4
+        },
+        {
+          "attributes": {
+            "POSITION": 4,
+            "NORMAL": 5
+          },
+          "indices": 3,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "node-0"
+    }
+  ],
+  "scenes": [
+    {
+      "name": "scene-0",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
