@@ -1,10 +1,7 @@
 fileFormatVersion: 2
-guid: 948e1b7327c293a4081ba3c18eaab19f
-labels:
-- toon
-- toonygooch
-- shader
-- ramp
+guid: 1ee557b0039cc1e42be3e9f5d68e8856
+timeCreated: 1526082944
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -30,8 +27,8 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: -3
-  maxTextureSize: 1024
+  textureFormat: 1
+  maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
     filterMode: -1
@@ -51,7 +48,7 @@ TextureImporter:
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
-  alphaUsage: 1
+  alphaUsage: 0
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
   textureType: 0
@@ -61,7 +58,7 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -78,10 +75,10 @@ TextureImporter:
   spritePackingTag: 
   userData: 'GRADIENT
 
-    000000,0.09411765#FFFFFF,1
+    000000,0.1617609#DFDFDF,0.2911727#FFFFFF,1
 
     1,0#1,1
 
-    Fixed'
+    Blend'
   assetBundleName: 
   assetBundleVariant: 
