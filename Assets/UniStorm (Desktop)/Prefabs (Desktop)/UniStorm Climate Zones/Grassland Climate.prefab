@@ -1,0 +1,153 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &168220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 487260}
+  - component: {fileID: 11491638}
+  - component: {fileID: 6538770}
+  - component: {fileID: 11492884}
+  m_Layer: 0
+  m_Name: Grassland Climate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &487260
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 105.8, y: 0.8234644, z: -24.9}
+  m_LocalScale: {x: 500, y: 200, z: 500}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6538770
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168220}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11491638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3fa4a9eca82a3d4aa37ebd8e56d31da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClimateName: Grassland
+  uniStormSystem: {fileID: 0}
+  uniStormsScript: {fileID: 0}
+  zoneWeather: 1
+  playerTag: Player
+  PlayerObject: {fileID: 0}
+  updateInterval: 0.1
+  climateHeight: 350
+  ifGreaterOrLessThan: 0
+  DetectionType: 0
+  TemperatureType: 0
+  minSpringTemp: 72
+  maxSpringTemp: 86
+  minSummerTemp: 94
+  maxSummerTemp: 105
+  minFallTemp: 53
+  maxFallTemp: 89
+  minWinterTemp: 32
+  maxWinterTemp: 41
+  startingSpringTemp: 79
+  startingSummerTemp: 99
+  startingFallTemp: 71
+  startingWinterTemp: 36
+  precipitationOdds: 70
+  precipitationOddsSpring: 55
+  precipitationOddsSummer: 60
+  precipitationOddsFall: 20
+  precipitationOddsWinter: 20
+  PrecipitationGraph:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 20
+      outSlope: 20
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 4
+      value: 60
+      inSlope: 11.166667
+      outSlope: 11.166667
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 7
+      value: 67
+      inSlope: 0.99999994
+      outSlope: 0.99999994
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 10
+      value: 66
+      inSlope: -0.6666667
+      outSlope: -0.6666667
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 12
+      value: 64
+      inSlope: 17.5
+      outSlope: 17.5
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 13
+      value: 100
+      inSlope: 36
+      outSlope: 36
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &11492884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 168220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6f91577bdc2fb47b28077c238cd01c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneColor: {r: 0.41911763, g: 0.9759634, b: 1, a: 0.5}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 168220}
+  m_IsPrefabParent: 1

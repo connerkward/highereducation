@@ -1,0 +1,31 @@
+This project uses the following items from Poly (http://poly.google.com):
+
+Title: Camilla Larsen Kjole
+Author: Shine E. Pants
+URL: https://poly.google.com/view/cYxkb_zxi9m
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: Flower-sprouts
+Author: Solstice FWD
+URL: https://poly.google.com/view/0xLo_8sBI26
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: kleine roos 5
+Author: Ruud op den Kelder
+URL: https://poly.google.com/view/aNs7T1-WwL6
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: rose
+Author: M Smith Jonn
+URL: https://poly.google.com/view/4tYPb7M9PTy
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
+
+Title: tree
+Author: konta johanna
+URL: https://poly.google.com/view/bk19zLgwVAW
+License: Creative Commons CC-BY
+https://creativecommons.org/licenses/by/3.0/legalcode
