@@ -140,8 +140,9 @@ public class MusicController : MonoBehaviour
                         && (ControllerInputHandler.instance.speed > 0.5f && audioSource.name.Contains("major") ||
                         (ControllerInputHandler.instance.speed <= 0.5f && audioSource.name.Contains("minor"))))
                     {
-                        Debug.Log("Lower Volume: " + audioSource.name);
-                        StartCoroutine(FadeOut(audioSource, fadeOutTime));
+                        Debug.Log("Stop Volume: " + audioSource.name);
+                        audioSource.volume = 0;
+                        //StartCoroutine(FadeOut(audioSource, fadeOutTime));
                     }
                     else if (!stop && audioSource.volume == 0 && BinaryTracks(audioSource, arrangement) == 1)
                     {
