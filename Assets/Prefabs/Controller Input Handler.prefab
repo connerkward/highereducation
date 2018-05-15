@@ -55,5 +55,7 @@ MonoBehaviour:
   rightController: 2
   indicator: {fileID: 0}
   keyboardDebugMode: 0
+  moveInterval: 0.001
+  lowerThreshold: 0.2
   speed: 0
   mood: 0
