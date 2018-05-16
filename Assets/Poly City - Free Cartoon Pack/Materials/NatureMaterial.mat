@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: NatureMaterial
-  m_Shader: {fileID: 4800000, guid: 6782973e3ca8b2543beddb0a3dc3175e, type: 3}
-  m_ShaderKeywords: OUTLINE_BLENDING TCP2_DISABLE_WRAPPED_LIGHT _EMISSION
+  m_Shader: {fileID: 4800000, guid: 35b7c6ba7e7041445a6bcfab3a36db38, type: 3}
+  m_ShaderKeywords: OUTLINE_BLENDING _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -84,7 +84,7 @@ Material:
     - _Parallax: 0.02
     - _RampSmooth: 0.01
     - _RampSmoothAdd: 0.75
-    - _RampThreshold: 0.297
+    - _RampThreshold: 0.045
     - _RimMax: 0.85
     - _RimMin: 0.6
     - _RimStrength: 0.5

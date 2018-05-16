@@ -271,12 +271,7 @@ public class ToD_Base : MonoBehaviour
     /// </summary>
     void UpdateSunAndMoon()
     {
-        // This rotates the sun 360 degree in X-axis according to our current time of day.
-        lSun.transform.localRotation = Quaternion.Euler((_fCurrentTimeOfDay * 360) - 90, 170, 0);
 
-        if (_bUseMoon == true)
-            lMoon.transform.localRotation = Quaternion.Euler((_fCurrentTimeOfDay * 360) - 270, 170, 0);
-    }
 
 
 
