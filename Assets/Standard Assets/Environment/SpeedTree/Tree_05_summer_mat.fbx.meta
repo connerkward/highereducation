@@ -21,7 +21,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: leafs_2
-    second: {fileID: 2100000, guid: 341595e250b17a943a17f80ee0e83bce, type: 2}
+    second: {fileID: 2100000, guid: 9bb937eab8db81d479b860edbe632635, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: swing_01
   m_Shader: {fileID: 4800000, guid: 6782973e3ca8b2543beddb0a3dc3175e, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: TCP2_RAMPTEXT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -85,9 +85,9 @@ Material:
     - _Offset2: 0
     - _Outline: 1.23
     - _Parallax: 0.02
-    - _RampSmooth: 0.1
+    - _RampSmooth: 1
     - _RampSmoothOtherLights: 0.5
-    - _RampThreshold: 0.5
+    - _RampThreshold: 0
     - _RampThresholdOtherLights: 0.5
     - _RimMax: 1
     - _RimMin: 0.5
