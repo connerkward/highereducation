@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: 3165d7738dccac841ad9ce294d36cba5
+guid: 5b854fdb45d656c44b12f9b3c16b46cc
 labels:
 - Demo
 timeCreated: 1466595696
 licenseType: Store
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
   defaultReferences: []
   executionOrder: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 313ad0ef31f75b84f9f31c0528802fdd
+guid: c97d5ceaa623e4c4e92323fc902b8727
 labels:
 - Character
 - Male
@@ -7,6 +7,8 @@ labels:
 timeCreated: 1483632968
 licenseType: Store
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

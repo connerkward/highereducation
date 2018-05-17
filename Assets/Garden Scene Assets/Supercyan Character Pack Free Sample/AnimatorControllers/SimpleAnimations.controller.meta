@@ -1,10 +1,12 @@
 fileFormatVersion: 2
-guid: f297797635a2b7445ad2ea55cec7353b
+guid: add6990ddbd5a6443818dc25478a1b70
 labels:
 - Movement
 timeCreated: 1464088545
 licenseType: Store
 NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

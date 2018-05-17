@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c41abbc94ac037f4c849e15fc42aa3bf
+guid: 2147a7a022825704bb85fcec7f9c0bbc
 timeCreated: 18446744011573954816
 ModelImporter:
   serializedVersion: 22
@@ -10,7 +10,17 @@ ModelImporter:
     3300000: //RootNode
     4300000: Object030
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 02 - Default
+    second: {fileID: 2100000, guid: 69f36be4c262f604daf40ab915b60e97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #38'
+    second: {fileID: 2100000, guid: 171abca39ee07584a9e39fcc03459ae9, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
