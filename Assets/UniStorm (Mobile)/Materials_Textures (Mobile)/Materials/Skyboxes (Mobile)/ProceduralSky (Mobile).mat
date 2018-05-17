@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: ProceduralSky (Mobile)
+  m_Shader: {fileID: 4800000, guid: d4bd29ff37540da42a5b74e5317450d6, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BackTex:
+        m_Texture: {fileID: 2800000, guid: 2a2070a774203964fb8a35ad4c738586, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BackTex2:
+        m_Texture: {fileID: 2800000, guid: 2a2070a774203964fb8a35ad4c738586, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DownTex:
+        m_Texture: {fileID: 2800000, guid: 2a2070a774203964fb8a35ad4c738586, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DownTex2:
+        m_Texture: {fileID: 2800000, guid: 2a2070a774203964fb8a35ad4c738586, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FogBottom:
+        m_Texture: {fileID: 2800000, guid: 50280d02faf22454487f42b59197082d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FogBottomText:
+        m_Texture: {fileID: 2800000, guid: e3b2ab41da6c7374fbbabcfde5cd9391, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FogSide:
+        m_Texture: {fileID: 2800000, guid: 50280d02faf22454487f42b59197082d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FogSideText:
+        m_Texture: {fileID: 2800000, guid: e3b2ab41da6c7374fbbabcfde5cd9391, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FrontTex:
+        m_Texture: {fileID: 2800000, guid: 2a2070a774203964fb8a35ad4c738586, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FrontTex2:
+        m_Texture: {fileID: 2800000, guid: 2a2070a774203964fb8a35ad4c738586, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LeftTex:
+        m_Texture: {fileID: 2800000, guid: 2a2070a774203964fb8a35ad4c738586, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LeftTex2:
+        m_Texture: {fileID: 2800000, guid: 2a2070a774203964fb8a35ad4c738586, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MoonTex:
+        m_Texture: {fileID: 2800000, guid: 81a7296b8983792489bbff92277536e6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RightTex:
+        m_Texture: {fileID: 2800000, guid: 2a2070a774203964fb8a35ad4c738586, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RightTex2:
+        m_Texture: {fileID: 2800000, guid: 2a2070a774203964fb8a35ad4c738586, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UpTex:
+        m_Texture: {fileID: 2800000, guid: 2a2070a774203964fb8a35ad4c738586, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UpTex2:
+        m_Texture: {fileID: 2800000, guid: 2a2070a774203964fb8a35ad4c738586, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AtmosphereThickness: 1.1
+    - _Blend: 1
+    - _BlendHorizon: 0.60714287
+    - _Exposure: 1
+    - _HdrExposure: 2.8
+    - _HorizonBrightness: 1.02
+    - _MIE: 0.001
+    - _RL: 0.005
+    - _SUN: 18.75
+    - _SkyExponent: 8.5
+    - _SkyIntensity: 1
+    - _SunIntensity: 0
+    - _SunSize: 0.03
+    m_Colors:
+    - _BottomColor: {r: 0.85294116, g: 0.85294116, b: 0.85294116, a: 0}
+    - _FogTint: {r: 0.78676474, g: 0.9470588, b: 1, a: 1}
+    - _GroundColor: {r: 0.5393058, g: 0.6392323, b: 0.6985294, a: 1}
+    - _HorizonColor: {r: 1, g: 1, b: 1, a: 0}
+    - _NightSkyTint: {r: 0.07785467, g: 0.17647058, b: 0.15606728, a: 1}
+    - _SkyTint: {r: 0.60294116, g: 0.5066295, b: 0.40343857, a: 1}
+    - _SunColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Tint: {r: 0.4575584, g: 0.57264155, b: 0.6838235, a: 1}
+    - _TopColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1002 &2100001
+EditorExtensionImpl:
+  serializedVersion: 6
