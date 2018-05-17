@@ -8,8 +8,8 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: free_male_1_body
   m_Shader: {fileID: 4800000, guid: f8d49205b3b0a644195633020367689d, type: 3}
-  m_ShaderKeywords: TCP2_NONE _EMISSION _GLOSSYREFLECTIONS_OFF _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
-    _SPECULARHIGHLIGHTS_OFF
+  m_ShaderKeywords: TCP2_NONE TCP2_STYLIZED_FRESNEL _EMISSION _GLOSSYREFLECTIONS_OFF
+    _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -93,14 +93,14 @@ Material:
     - _Offset2: 0
     - _Outline: 0.09
     - _Parallax: 0.02
-    - _RampSmooth: 0.021
-    - _RampSmoothAdd: 0.48
+    - _RampSmooth: 0
+    - _RampSmoothAdd: 0
     - _RampSmoothOtherLights: 0.457
     - _RampThreshold: 0
     - _RampThresholdOtherLights: 0.486
-    - _RimMax: 1
-    - _RimMin: 0.5
-    - _RimStrength: 0.5
+    - _RimMax: 0.69
+    - _RimMin: 0.511
+    - _RimStrength: 2
     - _Shadow_HSV_H: 0
     - _Shadow_HSV_S: 0
     - _Shadow_HSV_V: 0
@@ -110,7 +110,7 @@ Material:
     - _SmoothnessTextureChannel: 1
     - _SpecBlend: 1
     - _SpecSmooth: 1
-    - _SpecularHighlights: 0
+    - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendOutline: 5
     - _TCP2_DISABLE_WRAPPED_LIGHT: 0
@@ -118,7 +118,7 @@ Material:
     - _TCP2_OUTLINE_TEXTURED: 0
     - _TCP2_RAMPTEXT: 0
     - _TCP2_SPEC_TOON: 0
-    - _TCP2_STYLIZED_FRESNEL: 0
+    - _TCP2_STYLIZED_FRESNEL: 1
     - _TCP2_ZSMOOTH_ON: 0
     - _TexLod: 5
     - _UVSec: 0
