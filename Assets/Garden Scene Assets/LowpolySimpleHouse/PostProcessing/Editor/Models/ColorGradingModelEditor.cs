@@ -274,7 +274,7 @@ namespace UnityEditor.PostProcessing
                 );
 
 			// Precompute some values
-            var tonemap = ((ColorGradingModel)target).settings.tonemapping;
+            var tonemap = ((ColorGradingModel)target).basicsettings.tonemapping;
 
 		    const float scaleFactor = 20f;
             const float scaleFactorHalf = scaleFactor * 0.5f;

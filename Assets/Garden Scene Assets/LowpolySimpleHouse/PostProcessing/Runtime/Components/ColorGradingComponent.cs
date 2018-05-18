@@ -245,7 +245,7 @@ namespace UnityEngine.PostProcessing
                 };
             }
 
-            var curves = model.settings.curves;
+            var curves = model.basicsettings.curves;
             curves.hueVShue.Cache();
             curves.hueVSsat.Cache();
 
@@ -289,7 +289,7 @@ namespace UnityEngine.PostProcessing
 
         void GenerateLut()
         {
-            var settings = model.settings;
+            var settings = model.basicsettings;
 
             if (!IsLogLutValid(model.bakedLut))
             {
@@ -414,7 +414,7 @@ namespace UnityEngine.PostProcessing
             uberMaterial.SetTexture(Uniforms._LogLut, bakedLut);
             uberMaterial.SetVector(Uniforms._LogLut_Params, new Vector3(1f / bakedLut.width, 1f / bakedLut.height, bakedLut.height - 1f));
 
-            float ev = Mathf.Exp(model.settings.basic.postExposure * 0.69314718055994530941723212145818f);
+            float ev = Mathf.Exp(model.basicsettings.basic.postExposure * 0.69314718055994530941723212145818f);
             uberMaterial.SetFloat(Uniforms._ExposureEV, ev);
         }
 

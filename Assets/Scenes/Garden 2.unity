@@ -607,6 +607,21 @@ Prefab:
       propertyPath: m_jumpForce
       value: 9.2
       objectReference: {fileID: 0}
+    - target: {fileID: 137001386931196262, guid: 0e74cf81e6fd82546b4797f71ceffb81,
+        type: 2}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 137001386931196262, guid: 0e74cf81e6fd82546b4797f71ceffb81,
+        type: 2}
+      propertyPath: m_LightProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 137001386931196262, guid: 0e74cf81e6fd82546b4797f71ceffb81,
+        type: 2}
+      propertyPath: m_ReflectionProbeUsage
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e74cf81e6fd82546b4797f71ceffb81, type: 2}
   m_IsPrefabParent: 0
@@ -4233,9 +4248,11 @@ GameObject:
   - component: {fileID: 215924939}
   - component: {fileID: 215924938}
   - component: {fileID: 215924937}
+  - component: {fileID: 215924940}
   - component: {fileID: 215924936}
   - component: {fileID: 215924935}
   - component: {fileID: 215924934}
+  - component: {fileID: 215924941}
   m_Layer: 0
   m_Name: CenterEyeAnchor
   m_TagString: MainCamera
@@ -4308,12 +4325,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 215924932}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 0}
+  profile: {fileID: 11400000, guid: 2ab3b1dcb0632514d869dd3fbf40e78e, type: 2}
 --- !u!45 &215924937
 Skybox:
   m_ObjectHideFlags: 0
@@ -4367,6 +4384,35 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 215924932}
   m_Enabled: 1
+--- !u!114 &215924940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 215924932}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3309686a9fbbe6e42a182d5e0257704c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 1
+  threshold: 0.999
+  blurSpread: 1
+  separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
+  contrastCompositeShader: {fileID: 4800000, guid: 273404942eede4ea1883ca1fb2942507,
+    type: 3}
+--- !u!114 &215924941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 215924932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d75246cba1b9d54d874f3679a2e6630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ppProfile: {fileID: 11400000, guid: 2ab3b1dcb0632514d869dd3fbf40e78e, type: 2}
 --- !u!4 &224186904 stripped
 Transform:
   m_PrefabParentObject: {fileID: 485286, guid: 52591162887af4c4f99be558de89899c, type: 2}
@@ -8002,6 +8048,14 @@ Prefab:
     - target: {fileID: 463470, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 2}
       propertyPath: m_LocalScale.z
       value: 2.4622543
+      objectReference: {fileID: 0}
+    - target: {fileID: 11437430, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 2}
+      propertyPath: SurfaceShader
+      value: 
+      objectReference: {fileID: 4800000, guid: 5ab91cff8fdf6ff43a830d605b7c4823, type: 3}
+    - target: {fileID: 11437430, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 2}
+      propertyPath: ShowThirdPerson
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84c8b8609f9bb434eaf5248f17ff1293, type: 2}
@@ -15839,7 +15893,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &617056458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16056,9 +16110,8 @@ GameObject:
   - component: {fileID: 654530791}
   - component: {fileID: 654530790}
   - component: {fileID: 654530788}
-  - component: {fileID: 654530787}
-  - component: {fileID: 654530786}
   - component: {fileID: 654530789}
+  - component: {fileID: 654530786}
   m_Layer: 0
   m_Name: CenterEyeAnchor
   m_TagString: MainCamera
@@ -16087,44 +16140,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 654530784}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60e318a6043c1cb4a8ce1c8805bab930, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d75246cba1b9d54d874f3679a2e6630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resolution: 1
-  screenBlendMode: 0
-  sunTransform: {fileID: 0}
-  radialBlurIterations: 1
-  sunColor: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 1}
-  sunThreshold: {r: 0, g: 0, b: 0, a: 1}
-  sunShaftBlurRadius: 1
-  sunShaftIntensity: 2
-  maxRadius: 0.635
-  useDepthTexture: 1
-  sunShaftsShader: {fileID: 4800000, guid: d3b1c8c1036784176946f5cfbfb7fe4c, type: 3}
-  simpleClearShader: {fileID: 4800000, guid: f688f89ed5eb847c5b19c934a0f1e772, type: 3}
---- !u!114 &654530787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 654530784}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60e318a6043c1cb4a8ce1c8805bab930, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resolution: 1
-  screenBlendMode: 0
-  sunTransform: {fileID: 0}
-  radialBlurIterations: 2
-  sunColor: {r: 0.98039216, g: 0.6784314, b: 0.02745098, a: 1}
-  sunThreshold: {r: 0.24313726, g: 0.24313726, b: 0.24313726, a: 1}
-  sunShaftBlurRadius: 4.54
-  sunShaftIntensity: 2
-  maxRadius: 0.337
-  useDepthTexture: 1
-  sunShaftsShader: {fileID: 4800000, guid: d3b1c8c1036784176946f5cfbfb7fe4c, type: 3}
-  simpleClearShader: {fileID: 4800000, guid: f688f89ed5eb847c5b19c934a0f1e772, type: 3}
+  ppProfile: {fileID: 0}
 --- !u!45 &654530788
 Skybox:
   m_ObjectHideFlags: 0
@@ -20188,7 +20207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &1071179240
 ParticleSystemRenderer:
   serializedVersion: 4
@@ -23920,7 +23939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1258107030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31697,7 +31716,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9485294, g: 0.9485294, b: 0.9485294, a: 1}
   m_Intensity: 0.81
   m_Range: 10
   m_SpotAngle: 30
