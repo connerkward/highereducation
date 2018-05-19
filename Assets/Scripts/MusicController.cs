@@ -41,6 +41,9 @@ public class MusicController : MonoBehaviour
     public Arrangement stage1Selection;
     public Arrangement stage2Selection;
     public Arrangement stage3Selection;
+    public Arrangement inactionSelection;
+    public Arrangement allSelection;
+    public float inactionThreshhold;
     // Use this for initialization
     void Start()
     {
@@ -52,9 +55,9 @@ public class MusicController : MonoBehaviour
         minorMelodies = minorMelodyGO.GetComponentsInChildren<AudioSource>();
         minorCountermelodies = minorCountermelodyGO.GetComponentsInChildren<AudioSource>();
         minorAccompaniment = minorAccompanimentGO.GetComponentsInChildren<AudioSource>();
-        //stage1Selection = stage1Arrangements[UnityEngine.Random.Range(0, stage1Arrangements.Length)];
-        //stage2Selection = stage2Arrangements[UnityEngine.Random.Range(0, stage2Arrangements.Length)];
-        //stage3Selection = stage3Arrangements[UnityEngine.Random.Range(0, stage3Arrangements.Length)];
+        stage1Selection = stage1Arrangements[UnityEngine.Random.Range(0, stage1Arrangements.Length)];
+        stage2Selection = stage2Arrangements[UnityEngine.Random.Range(0, stage2Arrangements.Length)];
+        stage3Selection = stage3Arrangements[UnityEngine.Random.Range(0, stage3Arrangements.Length)];
     }
 
     // Update is called once per frame
@@ -62,12 +65,17 @@ public class MusicController : MonoBehaviour
     {
         if (!oldArrangement.Equals(currentArrangement))
         {
-            StopArrangement(stage3Selection, 3);
+            StopArrangement(allSelection, 3);
             Debug.Log("Arrangement Changed");
         }
         oldArrangement = currentArrangement;
         int a;
-        if (Mathf.Abs(ControllerInputHandler.instance.speed - 0.5f) < 0.167f)
+        if (Mathf.Abs(ControllerInputHandler.instance.speed - 0.5f) < inactionThreshhold) {
+            a = 0;
+            inactionSelection.accompaniment = currentArrangement.accompaniment;
+            currentArrangement = inactionSelection;
+        }
+        else if (Mathf.Abs(ControllerInputHandler.instance.speed - 0.5f) < 0.167f)
         {
             currentArrangement = stage1Selection;
             a = 1;
@@ -136,9 +144,9 @@ public class MusicController : MonoBehaviour
                         Debug.Log("Lower Volume: " + audioSource.name);
                         StartCoroutine(FadeOut(audioSource, fadeOutTime));
                     }
-                    if (stop && audioSource.volume == 1 && BinaryTracks(audioSource, arrangement) == 0 && InAllArrangements(audioSource)
-                        && (ControllerInputHandler.instance.speed > 0.5f && audioSource.name.Contains("major") ||
-                        (ControllerInputHandler.instance.speed <= 0.5f && audioSource.name.Contains("minor"))))
+                    if (stop && audioSource.volume == 1 && BinaryTracks(audioSource, arrangement) == 0
+                        && (ControllerInputHandler.instance.speed > 0.5f + inactionThreshhold && (audioSource.name.Contains("major") || audioSource.name.Contains("acc")) ||
+                        (ControllerInputHandler.instance.speed <= 0.5f - inactionThreshhold && (audioSource.name.Contains("minor") || audioSource.name.Contains("acc")))))
                     {
                         Debug.Log("Stop Volume: " + audioSource.name);
                         audioSource.volume = 0;
@@ -185,9 +193,11 @@ public class MusicController : MonoBehaviour
             } else if (arrangement == 2)
             {
                 return ControllerInputHandler.instance.speed <= 0.333 ? 1 : 0;
-            } else
+            } else if (arrangement == 1)
             {
-                return ControllerInputHandler.instance.speed <= 0.5 ? 1 : 0;
+                return ControllerInputHandler.instance.speed <= 0.5f - inactionThreshhold ? 1 : 0;
+            } else {
+                return (ControllerInputHandler.instance.speed <= 0.5f + inactionThreshhold && audioSource.name.Contains("acc") && audioSource.volume == 1) ? 1 : 0;
             }
             
         }
@@ -201,11 +211,14 @@ public class MusicController : MonoBehaviour
             {
                 return ControllerInputHandler.instance.speed >= 0.667 ? 1 : 0;
             }
-            else
+            else if (arrangement == 1)
             {
-                return ControllerInputHandler.instance.speed >= 0.5 ? 1 : 0;
+                return ControllerInputHandler.instance.speed >= 0.5f + inactionThreshhold ? 1 : 0;
+            } else {
+                return (ControllerInputHandler.instance.speed >= 0.5f - inactionThreshhold && audioSource.name.Contains("acc") && audioSource.volume == 1) ? 1 : 0;
             }
         }
+        return 0;
     }
 
     IEnumerator IntroFade()

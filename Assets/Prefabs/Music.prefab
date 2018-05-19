@@ -1183,8 +1183,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1953781806155450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 309.82, y: 16.295002, z: 316.8}
-  m_LocalScale: {x: 0.7227865, y: 0.7227866, z: 0.7227866}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4374239555994528}
   - {fileID: 4313963877965494}
@@ -1461,7 +1461,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2600,7 +2600,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1961280893358042}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 24625b4f07c6f5f46982796a076c6a3e, type: 3}
@@ -4234,18 +4234,18 @@ MonoBehaviour:
     - {fileID: 82563489470858314}
     - {fileID: 82125752785462220}
     - {fileID: 82311475095282562}
-    - {fileID: 82626514186148062}
+    - {fileID: 82135848308903884}
     countermelody:
     - {fileID: 82440092298100364}
     - {fileID: 82741955404125156}
     - {fileID: 82700387547661142}
     - {fileID: 82831284641914370}
     - {fileID: 82553828239824420}
-    - {fileID: 82440092298100364}
-    - {fileID: 82741955404125156}
-    - {fileID: 82700387547661142}
-    - {fileID: 82831284641914370}
-    - {fileID: 82553828239824420}
+    - {fileID: 82701958092572266}
+    - {fileID: 82866607475656764}
+    - {fileID: 82680345222945826}
+    - {fileID: 82835123712439338}
+    - {fileID: 82892162178618558}
     accompaniment:
     - {fileID: 82271222688102492}
     - {fileID: 82683190180204224}
@@ -4259,8 +4259,8 @@ MonoBehaviour:
     - {fileID: 82829390179489160}
   stage1Selection:
     melody:
-    - {fileID: 82130780254661716}
-    - {fileID: 82297228040104758}
+    - {fileID: 82065096838266866}
+    - {fileID: 82125752785462220}
     - {fileID: 82664260239512610}
     - {fileID: 82756531109442110}
     countermelody:
@@ -4275,10 +4275,10 @@ MonoBehaviour:
     - {fileID: 82327944002850650}
   stage2Selection:
     melody:
-    - {fileID: 82130780254661716}
+    - {fileID: 82065096838266866}
     - {fileID: 82664260239512610}
     - {fileID: 82945560715882506}
-    - {fileID: 82297228040104758}
+    - {fileID: 82125752785462220}
     - {fileID: 82756531109442110}
     - {fileID: 82835123712439338}
     countermelody:
@@ -4297,11 +4297,11 @@ MonoBehaviour:
     - {fileID: 82327944002850650}
   stage3Selection:
     melody:
-    - {fileID: 82130780254661716}
+    - {fileID: 82065096838266866}
     - {fileID: 82945560715882506}
     - {fileID: 82664260239512610}
     - {fileID: 82730471883524774}
-    - {fileID: 82297228040104758}
+    - {fileID: 82125752785462220}
     - {fileID: 82563489470858314}
     - {fileID: 82756531109442110}
     - {fileID: 82311475095282562}

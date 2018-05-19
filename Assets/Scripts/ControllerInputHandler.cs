@@ -58,8 +58,13 @@ public class ControllerInputHandler : MonoBehaviour {
             speed -= diff * moveInterval;
             Debug.Log("Harmony");
         } else if (diff < lowerThreshold && diff > 0){
-            speed += MoveTowardsCenter() * moveInterval;
-            Debug.Log("Inaction");
+            if(leftCurrentSpeed < lowerThreshold && rightCurrentSpeed < lowerThreshold) {
+                speed += MoveTowardsCenter() * moveInterval;
+                Debug.Log("Inaction");
+            } else {
+                // do nothing
+            }
+            
         } else {
             speed -= diff * moveInterval;
             Debug.Log("Chaos");
