@@ -5,14 +5,15 @@ using UnityEngine;
 public class ParticleController : MonoBehaviour {
     public ParticleSystem chaosParticles1;
     public ParticleSystem chaosParticles2;
-    public ParticleSystem harmonyParticles;
+    public ParticleSystem harmonyParticles1;
+    public ParticleSystem harmonyParticles2;
     // Use this for initialization
     void Start() {
 
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
         float distFromCenter = Mathf.Abs(ControllerInputHandler.instance.speed - 0.5f);
         if (ControllerInputHandler.instance.speed < 0.5f) {
             if (chaosParticles1.isPlaying) {
@@ -21,15 +22,26 @@ public class ParticleController : MonoBehaviour {
             if (chaosParticles2.isPlaying) {
                 chaosParticles2.Stop();
             }
-            if (!harmonyParticles.isPlaying) {
-                harmonyParticles.Play();
+            if (!harmonyParticles1.isPlaying) {
+                harmonyParticles1.Play();
             } else {
-                ParticleSystem.EmissionModule emissionModule = harmonyParticles.emission;
-                emissionModule.rate = 300 * distFromCenter;
-                var lifetimeColor = harmonyParticles.colorOverLifetime;
+                ParticleSystem.EmissionModule emissionModule = harmonyParticles1.emission;
+                emissionModule.rate = 500 * distFromCenter;
+                var lifetimeColor = harmonyParticles1.colorOverLifetime;
 
                 Gradient grad = new Gradient();
-                grad.SetKeys(new GradientColorKey[] { new GradientColorKey(Color.blue, 0.0f), new GradientColorKey(Color.red, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) });
+                grad.SetKeys(new GradientColorKey[] { new GradientColorKey(new Color(0, 0.5f + distFromCenter, 1f), 0f), new GradientColorKey(new Color(0.5f + distFromCenter, 1f, 0f), 1f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(1.0f, 1.0f) });
+                lifetimeColor.color = grad;
+            }
+            if (!harmonyParticles2.isPlaying) {
+                harmonyParticles2.Play();
+            } else {
+                ParticleSystem.EmissionModule emissionModule = harmonyParticles2.emission;
+                emissionModule.rate = 300 * distFromCenter;
+                var lifetimeColor = harmonyParticles2.colorOverLifetime;
+
+                Gradient grad = new Gradient();
+                grad.SetKeys(new GradientColorKey[] { new GradientColorKey(new Color(distFromCenter * 2f, 1f, 0.5f), 0f), new GradientColorKey(new Color(distFromCenter * 2f, 0.5f + distFromCenter, 0.5f + distFromCenter), 1f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(1.0f, 1.0f) });
                 lifetimeColor.color = grad;
             }
         } else {
@@ -39,15 +51,27 @@ public class ParticleController : MonoBehaviour {
             } else {
                 ParticleSystem.EmissionModule emissionModule = chaosParticles1.emission;
                 emissionModule.rate = 500 * distFromCenter;
+
+                var lifetimeColor = chaosParticles1.colorOverLifetime;
+
+                Gradient grad = new Gradient();
+                grad.SetKeys(new GradientColorKey[] { new GradientColorKey(new Color(0.5f, 0f, 1f - distFromCenter), 0f), new GradientColorKey(new Color(1f, 0.5f - distFromCenter, 0f), 1f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(1.0f, 1.0f) });
+                lifetimeColor.color = grad;
             }
             if (!chaosParticles2.isPlaying) {
                 chaosParticles2.Play();
             } else {
-                ParticleSystem.EmissionModule emissionModule = chaosParticles2.emission;
-                emissionModule.rate = 500 * distFromCenter;
+                var lifetimeColor = chaosParticles2.colorOverLifetime;
+
+                Gradient grad = new Gradient();
+                grad.SetKeys(new GradientColorKey[] { new GradientColorKey(new Color(0.5f - distFromCenter, 0f, 0.5f), 0f), new GradientColorKey(new Color(1 - distFromCenter, 1 - distFromCenter , 1 - distFromCenter), 1f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(1.0f, 1.0f) });
+                lifetimeColor.color = grad;
             }
-            if (harmonyParticles.isPlaying) {
-                harmonyParticles.Stop();
+            if (harmonyParticles1.isPlaying) {
+                harmonyParticles1.Stop();
+            }
+            if (harmonyParticles2.isPlaying) {
+                harmonyParticles2.Stop();
             }
         }
     }
