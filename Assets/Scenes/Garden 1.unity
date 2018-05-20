@@ -17941,6 +17941,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 82130780254661716, guid: a1f3e28db844c9a42904db86c2f1a09d,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a1f3e28db844c9a42904db86c2f1a09d, type: 2}
   m_IsPrefabParent: 0
@@ -18045,7 +18050,8 @@ Transform:
   m_PrefabInternal: {fileID: 1703934168}
 --- !u!4 &1703934170 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 4000010797582624, guid: f268d41a635271b499c19e7154a03321,
+    type: 2}
   m_PrefabInternal: {fileID: 1703934168}
 --- !u!1001 &1738136962
 Prefab:
@@ -18349,6 +18355,11 @@ Prefab:
       propertyPath: indicator
       value: 
       objectReference: {fileID: 570742805}
+    - target: {fileID: 114796932117162220, guid: 850088d090b6c5a49bd75b447b33bec5,
+        type: 2}
+      propertyPath: keyboardDebugMode
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 850088d090b6c5a49bd75b447b33bec5, type: 2}
   m_IsPrefabParent: 0
