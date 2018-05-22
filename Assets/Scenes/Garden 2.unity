@@ -675,7 +675,7 @@ WindZone:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 173388678}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Mode: 1
   m_Radius: 37.6
   m_WindMain: 0.26
@@ -4424,10 +4424,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ppProfile: {fileID: 11400000, guid: 2ab3b1dcb0632514d869dd3fbf40e78e, type: 2}
   windZone: {fileID: 0}
+  sunlight: {fileID: 0}
   tempLowBound: -100
   tempUpBound: 100
   windLowBound: -10
   windUpBound: 10
+  windTurbLowBound: 0
+  windTurbUpBound: 1.3
   bloomLowBound: 0
   bloomUpBound: 0.5
 --- !u!4 &224186904 stripped
@@ -22776,8 +22779,8 @@ WindZone:
   m_Enabled: 1
   m_Mode: 0
   m_Radius: 20
-  m_WindMain: 0.19
-  m_WindTurbulence: 0.05
+  m_WindMain: 0.24
+  m_WindTurbulence: 0
   m_WindPulseMagnitude: 0.83
   m_WindPulseFrequency: 0.94
 --- !u!4 &564431589
@@ -33756,13 +33759,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ppProfile: {fileID: 11400000, guid: 2ab3b1dcb0632514d869dd3fbf40e78e, type: 2}
-  windZone: {fileID: 173388680}
-  tempLowBound: -10
+  windZone: {fileID: 564431588}
+  sunlight: {fileID: 1791022673}
+  tempLowBound: -15
   tempUpBound: 30
-  windLowBound: 0
-  windUpBound: 1
+  windLowBound: 0.2
+  windUpBound: 0.5
+  windTurbLowBound: 0
+  windTurbUpBound: 1.3
   bloomLowBound: 0
-  bloomUpBound: 0.5
+  bloomUpBound: 0.75
 --- !u!45 &654530788
 Skybox:
   m_ObjectHideFlags: 0
@@ -37988,7 +37994,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 397001453
+  randomSeed: -2007380114
   InitialModule:
     serializedVersion: 3
     enabled: 1

@@ -7,6 +7,8 @@ public class ColorTempChange : UnityEngine.MonoBehaviour {
 
     public WindZone windZone;
 
+    public Light sunlight;
+
     static float speedLowBound = 0;
     static float speedUpBound = 1;
 
@@ -17,9 +19,12 @@ public class ColorTempChange : UnityEngine.MonoBehaviour {
 
 
     //[Range(-100, -1)]
-    public float windLowBound = 0;
+    public float windLowBound = 0; //WILL BE OVERWRITTEN BY INSPECTOR
    // [Range(1, 100)]
     public float windUpBound = 1;
+
+    public float windTurbLowBound = 0;
+    public float windTurbUpBound = 1.3f;
 
     public float bloomLowBound = 0;
     public float bloomUpBound = 0.5f;
@@ -47,11 +52,11 @@ public class ColorTempChange : UnityEngine.MonoBehaviour {
             bloomSettings.bloom.intensity = speedcoef * (bloomLowBound - (bloomUpBound)) + bloomUpBound; //0 to 0.5
             ppProfile.bloom.settings = bloomSettings;
         }
-        //OTHER POST PROCCESS RELATED EFFECTS
+        //WIND
+        windZone.windMain = speedcoef * (windUpBound - windLowBound); //0 to 1
+        windZone.windTurbulence = speedcoef * (windTurbUpBound - windTurbLowBound); //0 to 1
+        //LIGHT COLOR SCRIPT?
 
-         windZone.windMain = speedcoef * (windUpBound - windLowBound); //0 to 0.5
-         
-        
     }
 
 }
