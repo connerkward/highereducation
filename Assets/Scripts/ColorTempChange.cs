@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.PostProcessing;
 
-public class ColorTempratureChange : UnityEngine.MonoBehaviour {
+public class ColorTempChange : UnityEngine.MonoBehaviour {
 
     public PostProcessingProfile ppProfile;
 

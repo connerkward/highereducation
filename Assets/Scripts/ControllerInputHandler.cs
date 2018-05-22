@@ -16,7 +16,8 @@ public class ControllerInputHandler : MonoBehaviour {
     private float distanceLastFrame;
     public float lowerThreshold;
     public float speed;
-    public float mood;
+    public float bouncebackValue;
+
     public static ControllerInputHandler instance;
     // Use this for initialization
     void Start() {
@@ -41,7 +42,6 @@ public class ControllerInputHandler : MonoBehaviour {
             SingleSpeed ();
         }
 
-        CalculateMood ();
         UpdateIndicator();
     }
 
@@ -55,7 +55,12 @@ public class ControllerInputHandler : MonoBehaviour {
         float rightCurrentSpeed = Mathf.Abs(OVRInput.GetLocalControllerVelocity(rightController).magnitude);
         float diff = leftCurrentSpeed - rightCurrentSpeed;
         if(diff > lowerThreshold) {
-            speed -= diff * moveInterval;
+            if(speed > 0.5f) {
+                speed -= diff * moveInterval * bouncebackValue;
+            } else {
+                speed -= diff * moveInterval;
+            }
+            
             Debug.Log("Harmony");
         } else if (diff < lowerThreshold && diff > 0){
             if(leftCurrentSpeed < lowerThreshold && rightCurrentSpeed < lowerThreshold) {
@@ -66,7 +71,11 @@ public class ControllerInputHandler : MonoBehaviour {
             }
             
         } else {
-            speed -= diff * moveInterval;
+            if (speed < 0.5f) {
+                speed -= diff * moveInterval * bouncebackValue;
+            } else {
+                speed -= diff * moveInterval;
+            }
             Debug.Log("Chaos");
         }
         speed = Mathf.Clamp01(speed);
@@ -121,11 +130,5 @@ public class ControllerInputHandler : MonoBehaviour {
     private void TestSpeed() {
         speed += 0.001f * (Input.GetKey(KeyCode.D) ? 1 : -1);
         speed = Mathf.Clamp01(speed);
-    }
-
-    private void CalculateMood() {
-        float evaluation = Mathf.Pow(0.1f * (speed - 0.4f), 3);
-        mood += evaluation;
-        mood = Mathf.Clamp01(mood);
     }
 }

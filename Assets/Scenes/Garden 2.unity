@@ -56905,6 +56905,11 @@ Prefab:
       propertyPath: moveInterval
       value: 0.001
       objectReference: {fileID: 0}
+    - target: {fileID: 114796932117162220, guid: 850088d090b6c5a49bd75b447b33bec5,
+        type: 2}
+      propertyPath: bouncebackValue
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 850088d090b6c5a49bd75b447b33bec5, type: 2}
   m_IsPrefabParent: 0
