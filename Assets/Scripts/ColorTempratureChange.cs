@@ -1,17 +1,28 @@
-﻿using UnityEngine.PostProcessing;
+﻿using UnityEngine;
+using UnityEngine.PostProcessing;
 
 public class ColorTempratureChange : UnityEngine.MonoBehaviour {
 
     public PostProcessingProfile ppProfile;
-   
-    float speedLowBound = 0;
-    float speedUpBound = 1;
 
-    float tempLowBound = -5;
-    float tempUpBound = 5;
+    public WindZone windZone;
 
-    float bloomLowBound = 0;
-    float bloomUpBound = 0.5f;
+    static float speedLowBound = 0;
+    static float speedUpBound = 1;
+
+    [Range(-100, -1)]
+    public float tempLowBound = -10;
+    [Range(1, 100)]
+    public float tempUpBound = 10;
+
+
+    //[Range(-100, -1)]
+    public float windLowBound = 0;
+   // [Range(1, 100)]
+    public float windUpBound = 1;
+
+    public float bloomLowBound = 0;
+    public float bloomUpBound = 0.5f;
 
     // Use this for initialization
     void Start () {
@@ -19,6 +30,7 @@ public class ColorTempratureChange : UnityEngine.MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+       
         float _speed = ControllerInputHandler.instance.speed; // input 0 to 1 value
         float speedcoef = ((_speed - speedLowBound) / (speedUpBound - speedLowBound)); //speed coeficient
         //COLOR TEMP
@@ -36,6 +48,10 @@ public class ColorTempratureChange : UnityEngine.MonoBehaviour {
             ppProfile.bloom.settings = bloomSettings;
         }
         //OTHER POST PROCCESS RELATED EFFECTS
+
+         windZone.windMain = speedcoef * (windUpBound - windLowBound); //0 to 0.5
+         
+        
     }
 
 }

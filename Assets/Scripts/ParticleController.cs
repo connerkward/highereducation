@@ -5,8 +5,10 @@ using UnityEngine;
 public class ParticleController : MonoBehaviour {
     public ParticleSystem chaosParticles1;
     public ParticleSystem chaosParticles2;
+    public ParticleSystem chaosParticlesMax;
     public ParticleSystem harmonyParticles1;
     public ParticleSystem harmonyParticles2;
+    public ParticleSystem harmonyParticlesMax;
     // Use this for initialization
     void Start() {
 
@@ -16,6 +18,13 @@ public class ParticleController : MonoBehaviour {
     void FixedUpdate() {
         float distFromCenter = Mathf.Abs(ControllerInputHandler.instance.speed - 0.5f);
         if (ControllerInputHandler.instance.speed < 0.5f) {
+            if (ControllerInputHandler.instance.speed <= 0.01f) {
+                if (!harmonyParticlesMax.isPlaying) {
+                    harmonyParticlesMax.Play();
+                }
+            } else {
+                harmonyParticlesMax.Stop();
+            }
             if (chaosParticles1.isPlaying) {
                 chaosParticles1.Stop();
             }
@@ -26,7 +35,7 @@ public class ParticleController : MonoBehaviour {
                 harmonyParticles1.Play();
             } else {
                 ParticleSystem.EmissionModule emissionModule = harmonyParticles1.emission;
-                emissionModule.rate = 500 * distFromCenter;
+                emissionModule.rate = 1000 * distFromCenter;
                 var lifetimeColor = harmonyParticles1.colorOverLifetime;
 
                 Gradient grad = new Gradient();
@@ -37,7 +46,7 @@ public class ParticleController : MonoBehaviour {
                 harmonyParticles2.Play();
             } else {
                 ParticleSystem.EmissionModule emissionModule = harmonyParticles2.emission;
-                emissionModule.rate = 300 * distFromCenter;
+                emissionModule.rate = 1000 * distFromCenter;
                 var lifetimeColor = harmonyParticles2.colorOverLifetime;
 
                 Gradient grad = new Gradient();
@@ -45,12 +54,20 @@ public class ParticleController : MonoBehaviour {
                 lifetimeColor.color = grad;
             }
         } else {
+            if (ControllerInputHandler.instance.speed >= 0.99f) {
+                if (!chaosParticlesMax.isPlaying) {
+                    Debug.Log("Chaos Max");
+                    chaosParticlesMax.Play();
+                }
+            } else {
+                chaosParticlesMax.Stop();
+            }
             if (!chaosParticles1.isPlaying) {
                 chaosParticles1.Play();
 
             } else {
                 ParticleSystem.EmissionModule emissionModule = chaosParticles1.emission;
-                emissionModule.rate = 500 * distFromCenter;
+                emissionModule.rate = 1000 * distFromCenter;
 
                 var lifetimeColor = chaosParticles1.colorOverLifetime;
 
@@ -61,6 +78,9 @@ public class ParticleController : MonoBehaviour {
             if (!chaosParticles2.isPlaying) {
                 chaosParticles2.Play();
             } else {
+                ParticleSystem.EmissionModule emissionModule = chaosParticles2.emission;
+                emissionModule.rate = 1000 * distFromCenter;
+
                 var lifetimeColor = chaosParticles2.colorOverLifetime;
 
                 Gradient grad = new Gradient();
@@ -73,6 +93,7 @@ public class ParticleController : MonoBehaviour {
             if (harmonyParticles2.isPlaying) {
                 harmonyParticles2.Stop();
             }
+
         }
     }
 }
