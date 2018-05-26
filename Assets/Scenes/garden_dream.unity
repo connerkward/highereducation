@@ -500,6 +500,16 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 223272463638990850, guid: 79c09375d9b2e9945b73fd1fe7d2af1e,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1592814164}
+    - target: {fileID: 223272463638990850, guid: 79c09375d9b2e9945b73fd1fe7d2af1e,
+        type: 2}
+      propertyPath: m_PlaneDistance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79c09375d9b2e9945b73fd1fe7d2af1e, type: 2}
   m_IsPrefabParent: 0
@@ -617,6 +627,16 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -45
       objectReference: {fileID: 0}
+    - target: {fileID: 114687723589798678, guid: 126d619cf4daa52469682f85c1378b4a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860201035627524, guid: 126d619cf4daa52469682f85c1378b4a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
   m_IsPrefabParent: 0
@@ -664,6 +684,21 @@ Prefab:
       propertyPath: bouncebackValue
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114796932117162220, guid: 850088d090b6c5a49bd75b447b33bec5,
+        type: 2}
+      propertyPath: indicator
+      value: 
+      objectReference: {fileID: 1586234327}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 850088d090b6c5a49bd75b447b33bec5, type: 2}
   m_IsPrefabParent: 0
+--- !u!224 &1586234327 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224204905420968156, guid: 79c09375d9b2e9945b73fd1fe7d2af1e,
+    type: 2}
+  m_PrefabInternal: {fileID: 612826743}
+--- !u!20 &1592814164 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 2037080, guid: 126d619cf4daa52469682f85c1378b4a,
+    type: 2}
+  m_PrefabInternal: {fileID: 924062455}
