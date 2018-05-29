@@ -47,6 +47,7 @@ public class MusicController : MonoBehaviour
     }
     public Arrangement majorArrangement;
     public Arrangement minorArrangement;
+    private Arrangement currentArrangement;
     //public Arrangement[] stage1Arrangements;
     //public Arrangement[] stage2Arrangements;
     //public Arrangement[] stage3Arrangements;
@@ -79,7 +80,7 @@ public class MusicController : MonoBehaviour
         minorArrangement.melody = minorMelodies;
         minorArrangement.countermelody = minorCountermelodies;
         minorArrangement.accompaniment = minorAccompaniment;
-
+        currentArrangement = minorArrangement;
         //stage1Selection = stage1Arrangements[UnityEngine.Random.Range(0, stage1Arrangements.Length)];
         //stage2Selection = stage2Arrangements[UnityEngine.Random.Range(0, stage2Arrangements.Length)];
         //stage3Selection = stage3Arrangements[UnityEngine.Random.Range(0, stage3Arrangements.Length)];
@@ -92,12 +93,17 @@ public class MusicController : MonoBehaviour
             Debug.Log("Chaos Arrangement");
             PlayArrangement(minorArrangement);
             StopArrangement(majorArrangement);
+            currentArrangement = minorArrangement;
         } else if(ControllerInputHandler.instance.speed < 0.5f - inactionThreshhold) {
             Debug.Log("Harmony Arrangement");
             PlayArrangement(majorArrangement);
             StopArrangement(minorArrangement);
+            currentArrangement = majorArrangement;
         } else {
             // only play accompaniment
+            //StopArrangement(majorArrangement);
+            //StopArrangement(minorArrangement);
+            PlayAccompaniment(currentArrangement);
         }
         //if (!oldArrangement.Equals(currentArrangement))
         //{
@@ -153,6 +159,13 @@ public class MusicController : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
         audioSource.volume = 1f;
+    }
+
+    public void PlayAccompaniment(Arrangement arrangement) {
+        AudioSource audioSource = arrangement.accompaniment[0];
+        if(audioSource.volume == 0) {
+            StartCoroutine(FadeIn(audioSource, fadeInTime));
+        }
     }
 
     public void PlayArrangement(Arrangement arrangement) {
@@ -264,7 +277,7 @@ public class MusicController : MonoBehaviour
 
     int GetTrackVolume(AudioSource audioSource) {
         if (audioSource.name.Contains("major")) {
-            return ControllerInputHandler.instance.speed <= (Array.FindIndex(majorArrangement.melody, element => element == audioSource) + Array.FindIndex(majorArrangement.countermelody, element => element == audioSource) + Array.FindIndex(majorArrangement.accompaniment, element => element == audioSource) + 2) * 0.5f / (majorArrangement.melody.Length - 1) ? 1 : 0;
+            return ControllerInputHandler.instance.speed <= 0.5f - (Array.FindIndex(majorArrangement.melody, element => element == audioSource) + Array.FindIndex(majorArrangement.countermelody, element => element == audioSource) + Array.FindIndex(majorArrangement.accompaniment, element => element == audioSource) + 2) * 0.5f / (majorArrangement.melody.Length - 1) ? 1 : 0;
 
         } else if (audioSource.name.Contains("minor")) {
             return ControllerInputHandler.instance.speed >= 0.5f + (Array.FindIndex(minorArrangement.melody, element => element == audioSource) + Array.FindIndex(minorArrangement.countermelody, element => element == audioSource) + Array.FindIndex(minorArrangement.accompaniment, element => element == audioSource) + 2) * 0.5f / (minorArrangement.melody.Length - 1) ? 1 : 0;
