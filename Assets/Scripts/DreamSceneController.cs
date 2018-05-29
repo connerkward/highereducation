@@ -24,29 +24,14 @@ public class DreamSceneController : MonoBehaviour {
         scene2p4Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene2p4");
     }
 
-    IEnumerator Start () {
+    void Start () {
         Debug.Log("Loaded Garden Dream");
         source = GetComponent<AudioSource>();
 
         if (PlayerPrefs.GetInt("sceneNo") == 0)
         {
             PlayerPrefs.SetInt("sceneNo", 1);
-            yield return StartCoroutine(Scene2p1Events());
-            yield return StartCoroutine(Scene2p2Events());
-            yield return StartCoroutine(Scene2p3Events());
-            yield return StartCoroutine(Scene2p4Events());
-
-            float timer = waitTime;
-            Color c = overlayImage.color;
-            overlayImage.enabled = true;
-            while (timer > 0)
-            {
-                timer -= Time.deltaTime;
-                overlayImage.color = new Color(c.r, c.b, c.g, 1f - timer / waitTime);
-                yield return new WaitForSeconds(Time.deltaTime);
-            }
-
-            SceneManager.LoadScene("Garden 2");
+            StartCoroutine(Scene2p1Events());  
         }
     }
 
@@ -55,9 +40,9 @@ public class DreamSceneController : MonoBehaviour {
         Debug.Log("scene2p1 Events");
         foreach (AudioClip clip in scene2p1Audio)
         {
-            yield return StartCoroutine(playDialogue(clip));
+            yield return StartCoroutine(PlayDialogue(clip));
         } 
-        yield return null;
+        yield return StartCoroutine(Scene2p2Events()); ;
     }
 
     IEnumerator Scene2p2Events()
@@ -65,8 +50,9 @@ public class DreamSceneController : MonoBehaviour {
         Debug.Log("scene2p2 Events");
         foreach (AudioClip clip in scene2p2Audio)
         {
-            yield return StartCoroutine(playDialogue(clip));
+            yield return StartCoroutine(PlayDialogue(clip));
         }
+        yield return StartCoroutine(Scene2p3Events());
     }
 
     IEnumerator Scene2p3Events()
@@ -74,39 +60,60 @@ public class DreamSceneController : MonoBehaviour {
         Debug.Log("scene2p3 Events");
         foreach (AudioClip clip in scene2p3Audio)
         {
-            yield return StartCoroutine(playDialogue(clip));
+            yield return StartCoroutine(PlayDialogue(clip));
         }
-        yield return null;
+        yield return StartCoroutine(Scene2p4Events());
     }
 
     IEnumerator Scene2p4Events()
     {
         Debug.Log("scene2p4 Events");
-        yield return StartCoroutine(playDialogue(scene2p4Audio[0]));
+        yield return StartCoroutine(PlayDialogue(scene2p4Audio[0]));
         if (ControllerInputHandler.instance.speed<0.5)
         {
-            yield return StartCoroutine(playDialogue(scene2p4Audio[1]));
-            yield return StartCoroutine(playDialogue(scene2p4Audio[2]));
-            yield return StartCoroutine(playDialogue(scene2p4Audio[3]));
+            yield return StartCoroutine(PlayDialogue(scene2p4Audio[1]));
+            yield return StartCoroutine(PlayDialogue(scene2p4Audio[2]));
+            yield return StartCoroutine(PlayDialogue(scene2p4Audio[3]));
         }
         else
         {
-            yield return StartCoroutine(playDialogue(scene2p4Audio[4]));
-            yield return StartCoroutine(playDialogue(scene2p4Audio[5]));
-            yield return StartCoroutine(playDialogue(scene2p4Audio[6]));
+            yield return StartCoroutine(PlayDialogue(scene2p4Audio[4]));
+            yield return StartCoroutine(PlayDialogue(scene2p4Audio[5]));
+            yield return StartCoroutine(PlayDialogue(scene2p4Audio[6]));
         }
-        yield return null;
+        yield return SceneTransition();
     }
 
-    IEnumerator playDialogue(AudioClip clip)
+    IEnumerator PlayDialogue(AudioClip clip)
     {
         Debug.Log(clip.name);
         source.PlayOneShot(clip);
         yield return new WaitForSeconds(clip.length+1);
     }
 
+    IEnumerator SceneTransition()
+    {
+        float timer = waitTime;
+        Color c = overlayImage.color;
+        overlayImage.enabled = true;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            overlayImage.color = new Color(c.r, c.b, c.g, 1f - timer / waitTime);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        SceneManager.LoadScene("Garden 2");
+    }
+
     // Update is called once per frame
     void Update () {
 		
 	}
+
+    private void OnApplicationQuit()
+    {
+        Debug.Log("player pref reset");
+        PlayerPrefs.DeleteAll();
+    }
 }
