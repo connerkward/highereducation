@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour {
     public AudioSource source;
+    public AudioSource introMusic;
     public AudioClip[] scene1Audio;
     public AudioClip[] scene3Audio;
     public AudioClip[] scene4Audio;
@@ -13,6 +14,7 @@ public class SceneController : MonoBehaviour {
     public float delay;
     public float waitTime;
     public Image overlayImage;
+    public float transitionTime;
     // Use this for initialization
 
     private void Awake()
@@ -22,6 +24,9 @@ public class SceneController : MonoBehaviour {
         scene4Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene4");
     }
     void Start () {
+        overlayImage = GameObject.Find("Canvas/Overlay").GetComponent<Image>();
+        StartCoroutine(IntroFade());
+
         Debug.Log("scenecontroller Garden 2");
         source = GetComponent<AudioSource>();
  
@@ -37,11 +42,13 @@ public class SceneController : MonoBehaviour {
 
     IEnumerator Scene1Events()
     {
+        ControllerInputHandler.instance.allowInput = false;
+        introMusic.Play();
         foreach (AudioClip clip in scene1Audio)
         {
             yield return StartCoroutine(PlayDialogue(clip));
         }
-
+        introMusic.Stop();
         float timer = waitTime;
         Color c = overlayImage.color;
         overlayImage.enabled = true;
@@ -53,7 +60,7 @@ public class SceneController : MonoBehaviour {
         }
 
         SceneManager.LoadScene("garden_dream");
-        yield return null;
+        ControllerInputHandler.instance.allowInput = true;
     }
 
     IEnumerator Scene3Events()
@@ -65,7 +72,7 @@ public class SceneController : MonoBehaviour {
         yield return StartCoroutine(PlayDialogue(scene3Audio[1]));
         //animation - wind blows
         yield return StartCoroutine(PlayDialogue(scene3Audio[2]));
-        yield return StartCoroutine(Scene4Events()); ;
+        yield return StartCoroutine(Scene4Events());
     }
 
     IEnumerator Scene4Events()
@@ -95,5 +102,15 @@ public class SceneController : MonoBehaviour {
     {
         Debug.Log("player pref reset");
         PlayerPrefs.DeleteAll();
+    }
+    IEnumerator IntroFade() {
+        float timer = 0;
+        Color c = overlayImage.color;
+        overlayImage.enabled = true;
+        while (timer < transitionTime) {
+            timer += Time.deltaTime;
+            overlayImage.color = new Color(c.r, c.b, c.g, 1f - timer / transitionTime);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
     }
 }

@@ -32,8 +32,6 @@ public class MusicController : MonoBehaviour
     private AudioSource[] minorMelodies;
     private AudioSource[] minorCountermelodies;
     private AudioSource[] minorAccompaniment;
-    public Image overlayImage;
-    public float transitionTime;
     public float fadeOutTime;
     public float fadeInTime;
     //private Arrangement currentArrangement;
@@ -60,8 +58,6 @@ public class MusicController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        StartCoroutine(IntroFade());
-
         majorMelodies = majorMelodyGO.GetComponentsInChildren<AudioSource>();
         majorCountermelodies = majorCountermelodyGO.GetComponentsInChildren<AudioSource>();
         majorAccompaniment = majorAccompanimentGO.GetComponentsInChildren<AudioSource>();
@@ -89,22 +85,28 @@ public class MusicController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ControllerInputHandler.instance.speed > 0.5f + inactionThreshhold) {
-            Debug.Log("Chaos Arrangement");
-            PlayArrangement(minorArrangement);
-            StopArrangement(majorArrangement);
-            currentArrangement = minorArrangement;
-        } else if(ControllerInputHandler.instance.speed < 0.5f - inactionThreshhold) {
-            Debug.Log("Harmony Arrangement");
-            PlayArrangement(majorArrangement);
-            StopArrangement(minorArrangement);
-            currentArrangement = majorArrangement;
+        if (ControllerInputHandler.instance.allowInput) {
+            if (ControllerInputHandler.instance.speed > 0.5f + inactionThreshhold) {
+                Debug.Log("Chaos Arrangement");
+                PlayArrangement(minorArrangement);
+                StopArrangement(majorArrangement);
+                currentArrangement = minorArrangement;
+            } else if (ControllerInputHandler.instance.speed < 0.5f - inactionThreshhold) {
+                Debug.Log("Harmony Arrangement");
+                PlayArrangement(majorArrangement);
+                StopArrangement(minorArrangement);
+                currentArrangement = majorArrangement;
+            } else {
+                // only play accompaniment
+                //StopArrangement(majorArrangement);
+                //StopArrangement(minorArrangement);
+                PlayAccompaniment(currentArrangement);
+            }
         } else {
-            // only play accompaniment
-            //StopArrangement(majorArrangement);
-            //StopArrangement(minorArrangement);
-            PlayAccompaniment(currentArrangement);
+            StopArrangement(minorArrangement);
+            StopArrangement(majorArrangement);
         }
+
         //if (!oldArrangement.Equals(currentArrangement))
         //{
         //    StopArrangement(allSelection, 3);
@@ -322,16 +324,5 @@ public class MusicController : MonoBehaviour
     //    }
     //}
 
-    IEnumerator IntroFade()
-    {
-        float timer = 0;
-        Color c = overlayImage.color;
-        overlayImage.enabled = true;
-        while (timer < transitionTime)
-        {
-            timer += Time.deltaTime;
-            overlayImage.color = new Color(c.r, c.b, c.g, 1f - timer / transitionTime);
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-    }
+
 }

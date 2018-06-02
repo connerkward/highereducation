@@ -13,6 +13,7 @@ public class DreamSceneController : MonoBehaviour {
 
     public float delay;
     public float waitTime;
+    public float transitionTime;
     public Image overlayImage;
     // Use this for initialization
 
@@ -25,6 +26,8 @@ public class DreamSceneController : MonoBehaviour {
     }
 
     void Start () {
+        overlayImage = GameObject.Find("Canvas/Overlay").GetComponent<Image>();
+        StartCoroutine(IntroFade());
         Debug.Log("Loaded Garden Dream");
         source = GetComponent<AudioSource>();
 
@@ -41,7 +44,8 @@ public class DreamSceneController : MonoBehaviour {
         foreach (AudioClip clip in scene2p1Audio)
         {
             yield return StartCoroutine(PlayDialogue(clip));
-        } 
+        }
+        yield return new WaitUntil(()=> ControllerInputHandler.instance.speed < 0.01f);
         yield return StartCoroutine(Scene2p2Events()); ;
     }
 
@@ -52,6 +56,7 @@ public class DreamSceneController : MonoBehaviour {
         {
             yield return StartCoroutine(PlayDialogue(clip));
         }
+        yield return new WaitUntil(() => ControllerInputHandler.instance.speed > 0.99f);
         yield return StartCoroutine(Scene2p3Events());
     }
 
@@ -115,5 +120,15 @@ public class DreamSceneController : MonoBehaviour {
     {
         Debug.Log("player pref reset");
         PlayerPrefs.DeleteAll();
+    }
+    IEnumerator IntroFade() {
+        float timer = 0;
+        Color c = overlayImage.color;
+        overlayImage.enabled = true;
+        while (timer < transitionTime) {
+            timer += Time.deltaTime;
+            overlayImage.color = new Color(c.r, c.b, c.g, 1f - timer / transitionTime);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
     }
 }
