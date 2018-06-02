@@ -16,6 +16,7 @@ public class SceneController : MonoBehaviour {
     public Image overlayImage;
     public float transitionTime;
     private Weather_Controller weatherController;
+    public ParticleSystem clouds;
     // Use this for initialization
 
     private void Awake()
@@ -32,12 +33,12 @@ public class SceneController : MonoBehaviour {
         Debug.Log("scenecontroller Garden 2");
         source = GetComponent<AudioSource>();
 
-        if (PlayerPrefs.GetInt("sceneNo") == 0) {
-            StartCoroutine(Scene1Events());
-        } else if (PlayerPrefs.GetInt("sceneNo") == 1) {
-            StartCoroutine(Scene3Events());
-        }
-        //StartCoroutine(Scene3Events());
+        //if (PlayerPrefs.GetInt("sceneNo") == 0) {
+        //    StartCoroutine(Scene1Events());
+        //} else if (PlayerPrefs.GetInt("sceneNo") == 1) {
+        //    StartCoroutine(Scene3Events());
+        //}
+        StartCoroutine(Scene3Events());
     }
 
     IEnumerator Scene1Events()
@@ -77,6 +78,7 @@ public class SceneController : MonoBehaviour {
 
     IEnumerator Scene4Events()
     {
+        clouds.Play();
         weatherController.ExitCurrentWeather((int)Weather_Controller.WeatherType.RAIN);
         Debug.Log("Scene 4 Events coroutine");
         //animation - amanda next to door, door opens
