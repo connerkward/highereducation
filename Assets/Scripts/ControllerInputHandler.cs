@@ -17,11 +17,19 @@ public class ControllerInputHandler : MonoBehaviour {
     public float lowerThreshold;
     public float speed;
     public float bouncebackValue;
+    public bool allowInput;
 
     public static ControllerInputHandler instance;
     // Use this for initialization
     void Start() {
-        instance = this;
+        indicator = GameObject.Find("Canvas/Indicator").GetComponent<RectTransform>();
+        if (!instance) {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else if(instance != this) {
+            Destroy(gameObject);
+        }
+
         frames = 0;
         leftAverageSpeed = 0;
         leftTotalSpeed = 0;
@@ -33,16 +41,17 @@ public class ControllerInputHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-
-        if (keyboardDebugMode)
-        {
-            TestSpeed();
-        } else
-        {
-            SingleSpeed ();
+        if (!indicator) {
+            indicator = GameObject.Find("Canvas/Indicator").GetComponent<RectTransform>();
         }
-
-        UpdateIndicator();
+        if (allowInput) {
+            if (keyboardDebugMode) {
+                TestSpeed();
+            } else {
+                SingleSpeed();
+            }
+            UpdateIndicator();
+        }
     }
 
     private void UpdateIndicator() {
