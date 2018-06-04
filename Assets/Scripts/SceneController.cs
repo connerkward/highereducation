@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class SceneController : MonoBehaviour {
     public AudioSource source;
     public AudioSource introMusic;
-    public AudioClip[] scene1Audio;
-    public AudioClip[] scene3Audio;
-    public AudioClip[] scene4Audio;
+    private AudioClip[] scene1Audio;
+    private AudioClip[] scene3Audio;
+    private AudioClip[] scene4Audio;
+    private AnimationObjects animObj;
 
     public float delay;
     public float waitTime;
@@ -21,9 +23,8 @@ public class SceneController : MonoBehaviour {
 
     private void Awake()
     {
-        scene1Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene1");
-        scene3Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene3");
-        scene4Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene4");
+        LoadAudioAssets();
+        animObj = GetComponent<AnimationObjects>();
     }
     void Start () {
         weatherController = FindObjectOfType<Weather_Controller>();
@@ -38,17 +39,32 @@ public class SceneController : MonoBehaviour {
         } else if (PlayerPrefs.GetInt("sceneNo") == 1) {
             StartCoroutine(Scene3Events());
         }
-        //StartCoroutine(Scene3Events());
     }
 
-    IEnumerator Scene1Events()
+    void LoadAudioAssets()
+    {
+        scene1Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene1");
+        scene3Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene3");
+        scene4Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene4");
+    }
+
+IEnumerator Scene1Events()
     {
         ControllerInputHandler.instance.allowInput = false;
         introMusic.Play();
-        foreach (AudioClip clip in scene1Audio)
-        {
-            yield return StartCoroutine(PlayDialogue(clip));
-        }
+        //Amanda sleeping animation
+        animObj.scene1Objects[0].SetActive(true);
+        animObj.scene1Pd[0].Play();
+        //play dialogues
+        yield return StartCoroutine(PlayDialogue(scene1Audio[0]));
+        yield return StartCoroutine(PlayDialogue(scene1Audio[1]));
+        //amanda dreaming animation
+        animObj.scene1Objects[0].SetActive(false);
+        animObj.scene1Objects[1].SetActive(true);
+        animObj.scene1Pd[1].Play();
+        yield return StartCoroutine(PlayDialogue(scene1Audio[2]));
+        yield return StartCoroutine(PlayDialogue(scene1Audio[3]));
+
         introMusic.Stop();
         float timer = waitTime;
         Color c = overlayImage.color;
@@ -70,6 +86,19 @@ public class SceneController : MonoBehaviour {
         //animation - amanda plants
         yield return StartCoroutine(PlayDialogue(scene3Audio[0]));
         //animation - flower grows
+        animObj.scene3BloomObjects[0].SetActive(true);
+        animObj.scene3BloomPd[0].Play(); //yellow flowers
+        animObj.scene3BloomPd[1].Play(); //pink roses
+        yield return new WaitForSeconds((float)animObj.scene3BloomPd[1].duration);
+        if (ControllerInputHandler.instance.speed > 0.5) //if chaos wilt flowers
+        {
+            Debug.Log("Chaos Flowers");
+            animObj.scene3BloomObjects[0].SetActive(false);
+            animObj.scene3BloomObjects[1].SetActive(true);
+            animObj.scene3BloomPd[2].Play(); //wilt yellow flowers
+            animObj.scene3BloomPd[3].Play(); //wilt pink flowers
+            yield return new WaitForSeconds((float)animObj.scene3BloomPd[2].duration);
+        }
         yield return StartCoroutine(PlayDialogue(scene3Audio[1]));
         //animation - wind blows
         yield return StartCoroutine(PlayDialogue(scene3Audio[2]));
@@ -82,6 +111,23 @@ public class SceneController : MonoBehaviour {
         weatherController.ExitCurrentWeather((int)Weather_Controller.WeatherType.RAIN);
         Debug.Log("Scene 4 Events coroutine");
         //animation - amanda next to door, door opens
+        animObj.scene4DoorObjects[2].SetActive(false);
+        if (ControllerInputHandler.instance.speed < 0.5)
+        {
+            Debug.Log("Harmony Door");
+            animObj.scene4DoorObjects[0].SetActive(true);
+            animObj.scene4DoorPd[0].Play();
+            yield return new WaitForSeconds((float)animObj.scene4DoorPd[0].duration);
+        }
+        else
+        {
+            Debug.Log("Chaos Door");
+            animObj.scene4DoorObjects[0].SetActive(false);
+            animObj.scene4DoorObjects[1].SetActive(true);
+            animObj.scene4DoorPd[1].Play();
+            yield return new WaitForSeconds((float)animObj.scene4DoorPd[1].duration);
+        }
+        
         yield return StartCoroutine(PlayDialogue(scene4Audio[0]));
         //animation - reaches out to touch player, rain shield
         yield return StartCoroutine(PlayDialogue(scene4Audio[1]));
@@ -96,10 +142,6 @@ public class SceneController : MonoBehaviour {
         source.PlayOneShot(clip);
         yield return new WaitForSeconds(clip.length+1);
     }
-    // Update is called once per frame
-    void Update () {
-		
-	}
 
     private void OnApplicationQuit()
     {
