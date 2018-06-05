@@ -84,6 +84,7 @@ IEnumerator Scene1Events()
     {
         Debug.Log("Scene 3 Events coroutine");
         //animation - amanda plants
+        animObj.scene4AmandaObj[0].SetActive(true); //Amanda idle
         yield return StartCoroutine(PlayDialogue(scene3Audio[0]));
         //animation - flower grows
         animObj.scene3BloomObjects[0].SetActive(true);
@@ -107,10 +108,17 @@ IEnumerator Scene1Events()
 
     IEnumerator Scene4Events()
     {
+        Debug.Log("Scene 4 Events coroutine");
         clouds.Play();
         weatherController.ExitCurrentWeather((int)Weather_Controller.WeatherType.RAIN);
-        Debug.Log("Scene 4 Events coroutine");
-        //animation - amanda next to door, door opens
+        //animation - amanda walks to door
+        animObj.scene4AmandaObj[0].SetActive(false);
+        yield return StartCoroutine(AmandaWalk());
+        //set new idle position
+        animObj.scene4AmandaObj[2].SetActive(true);
+        //amanda tries to open door
+        // door opens
+        yield return new WaitForSeconds(4);
         animObj.scene4DoorObjects[2].SetActive(false);
         if (ControllerInputHandler.instance.speed < 0.5)
         {
@@ -141,6 +149,14 @@ IEnumerator Scene1Events()
         Debug.Log(clip.name);
         source.PlayOneShot(clip);
         yield return new WaitForSeconds(clip.length+1);
+    }
+
+    IEnumerator AmandaWalk()
+    {
+        Debug.Log("Amanda walk start");
+        animObj.scene4AmandaObj[1].SetActive(true);
+        yield return new WaitForSeconds((float)animObj.scene4AmandaPd[1].duration);
+        animObj.scene4AmandaObj[1].SetActive(false);
     }
 
     private void OnApplicationQuit()
