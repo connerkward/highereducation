@@ -26,15 +26,26 @@ public class DreamSceneController : MonoBehaviour {
     }
 
     void Start () {
-        overlayImage = GameObject.Find("Canvas/Overlay").GetComponent<Image>();
-        StartCoroutine(IntroFade());
-        Debug.Log("Loaded Garden Dream");
-        source = GetComponent<AudioSource>();
+        DontDestroyOnLoad(gameObject);
+    }
+    private void OnEnable() {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
-        if (PlayerPrefs.GetInt("sceneNo") == 0)
-        {
-            PlayerPrefs.SetInt("sceneNo", 1);
-            StartCoroutine(Scene2p1Events());  
+    private void OnDisable() {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        if (scene.name == "garden_dream") {
+            overlayImage = GameObject.Find("Canvas/Overlay").GetComponent<Image>();
+            Debug.Log("Loaded Garden Dream");
+            source = GetComponent<AudioSource>();
+            StartCoroutine(IntroFade());
+            if (PlayerPrefs.GetInt("sceneNo") == 0) {
+                PlayerPrefs.SetInt("sceneNo", 1);
+                StartCoroutine(Scene2p1Events());
+            }
         }
     }
 

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 static class RandomExtensions {
     public static void Shuffle<T>(this System.Random rng, T[] array) {
@@ -55,9 +56,14 @@ public class MusicController : MonoBehaviour
     //public Arrangement inactionSelection;
     //public Arrangement allSelection;
     public float inactionThreshhold;
+    public bool isDream;
+    public bool isGarden;
+    private bool play;
     // Use this for initialization
-    void Start()
+    void Awake()
     {
+        DontDestroyOnLoad(gameObject);
+        play = (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Garden 2") && isGarden && PlayerPrefs.GetInt("sceneNo") == 1) || (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("garden_dream") && isDream);
         majorMelodies = majorMelodyGO.GetComponentsInChildren<AudioSource>();
         majorCountermelodies = majorCountermelodyGO.GetComponentsInChildren<AudioSource>();
         majorAccompaniment = majorAccompanimentGO.GetComponentsInChildren<AudioSource>();
@@ -85,7 +91,8 @@ public class MusicController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ControllerInputHandler.instance.allowInput) {
+        play = (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Garden 2") && isGarden) || (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("garden_dream") && isDream);
+        if (ControllerInputHandler.instance.allowInput && play) {
             if (ControllerInputHandler.instance.speed > 0.5f + inactionThreshhold) {
                 Debug.Log("Chaos Arrangement");
                 PlayArrangement(minorArrangement);

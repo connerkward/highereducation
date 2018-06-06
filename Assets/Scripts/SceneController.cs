@@ -21,35 +21,44 @@ public class SceneController : MonoBehaviour {
     public ParticleSystem clouds;
     // Use this for initialization
 
-    private void Awake()
-    {
+    private void Awake() {
         LoadAudioAssets();
-        animObj = GetComponent<AnimationObjects>();
     }
-    void Start () {
-        weatherController = FindObjectOfType<Weather_Controller>();
-        overlayImage = GameObject.Find("Canvas/Overlay").GetComponent<Image>();
-        StartCoroutine(IntroFade());
+    void Start() {
+        DontDestroyOnLoad(gameObject);
+    }
 
-        Debug.Log("scenecontroller Garden 2");
-        source = GetComponent<AudioSource>();
+    private void OnEnable() {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
-        if (PlayerPrefs.GetInt("sceneNo") == 0) {
-            StartCoroutine(Scene1Events());
-        } else if (PlayerPrefs.GetInt("sceneNo") == 1) {
-            StartCoroutine(Scene3Events());
+    private void OnDisable() {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        if(scene.name == "Garden 2") {
+            animObj = FindObjectOfType<AnimationObjects>();
+            weatherController = FindObjectOfType<Weather_Controller>();
+            overlayImage = GameObject.Find("Canvas/Overlay").GetComponent<Image>();
+            Debug.Log("scenecontroller Garden 2");
+            source = GetComponent<AudioSource>();
+            StartCoroutine(IntroFade());
+            if (PlayerPrefs.GetInt("sceneNo") == 0) {
+                StartCoroutine(Scene1Events());
+            } else if (PlayerPrefs.GetInt("sceneNo") == 1) {
+                StartCoroutine(Scene3Events());
+            }
         }
     }
 
-    void LoadAudioAssets()
-    {
+    void LoadAudioAssets() {
         scene1Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene1");
         scene3Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene3");
         scene4Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene4");
     }
 
-IEnumerator Scene1Events()
-    {
+    IEnumerator Scene1Events() {
         ControllerInputHandler.instance.allowInput = false;
         introMusic.Play();
         //Amanda sleeping animation
@@ -69,8 +78,7 @@ IEnumerator Scene1Events()
         float timer = waitTime;
         Color c = overlayImage.color;
         overlayImage.enabled = true;
-        while (timer > 0)
-        {
+        while (timer > 0) {
             timer -= Time.deltaTime;
             overlayImage.color = new Color(c.r, c.b, c.g, 1f - timer / waitTime);
             yield return new WaitForSeconds(Time.deltaTime);
@@ -80,22 +88,21 @@ IEnumerator Scene1Events()
         ControllerInputHandler.instance.allowInput = true;
     }
 
-    IEnumerator Scene3Events()
-    {
+    IEnumerator Scene3Events() {
         Debug.Log("Scene 3 Events coroutine");
         //animation - amanda plants
         animObj.scene4AmandaObj[0].SetActive(true); //Amanda idle
         yield return StartCoroutine(PlayDialogue(scene3Audio[0]));
         //animation - flower grows
-        animObj.scene3BloomObjects[0].SetActive(true);
+        animObj.scene3BloomPd[0].gameObject.SetActive(true);
         animObj.scene3BloomPd[0].Play(); //yellow flowers
         animObj.scene3BloomPd[1].Play(); //pink roses
         yield return new WaitForSeconds((float)animObj.scene3BloomPd[1].duration);
         if (ControllerInputHandler.instance.speed > 0.5) //if chaos wilt flowers
         {
             Debug.Log("Chaos Flowers");
-            animObj.scene3BloomObjects[0].SetActive(false);
-            animObj.scene3BloomObjects[1].SetActive(true);
+            animObj.scene3BloomPd[0].gameObject.SetActive(false);
+            animObj.scene3BloomPd[1].gameObject.SetActive(true);
             animObj.scene3BloomPd[2].Play(); //wilt yellow flowers
             animObj.scene3BloomPd[3].Play(); //wilt pink flowers
             yield return new WaitForSeconds((float)animObj.scene3BloomPd[2].duration);
@@ -106,8 +113,7 @@ IEnumerator Scene1Events()
         yield return StartCoroutine(Scene4Events());
     }
 
-    IEnumerator Scene4Events()
-    {
+    IEnumerator Scene4Events() {
         Debug.Log("Scene 4 Events coroutine");
         clouds.Play();
         weatherController.ExitCurrentWeather((int)Weather_Controller.WeatherType.RAIN);
@@ -120,22 +126,19 @@ IEnumerator Scene1Events()
         // door opens
         yield return new WaitForSeconds(4);
         animObj.scene4DoorObjects[2].SetActive(false);
-        if (ControllerInputHandler.instance.speed < 0.5)
-        {
+        if (ControllerInputHandler.instance.speed < 0.5) {
             Debug.Log("Harmony Door");
             animObj.scene4DoorObjects[0].SetActive(true);
             animObj.scene4DoorPd[0].Play();
             yield return new WaitForSeconds((float)animObj.scene4DoorPd[0].duration);
-        }
-        else
-        {
+        } else {
             Debug.Log("Chaos Door");
             animObj.scene4DoorObjects[0].SetActive(false);
             animObj.scene4DoorObjects[1].SetActive(true);
             animObj.scene4DoorPd[1].Play();
             yield return new WaitForSeconds((float)animObj.scene4DoorPd[1].duration);
         }
-        
+
         yield return StartCoroutine(PlayDialogue(scene4Audio[0]));
         //animation - reaches out to touch player, rain shield
         yield return StartCoroutine(PlayDialogue(scene4Audio[1]));
@@ -144,23 +147,20 @@ IEnumerator Scene1Events()
         yield return null;
     }
 
-    IEnumerator PlayDialogue(AudioClip clip)
-    {
+    IEnumerator PlayDialogue(AudioClip clip) {
         Debug.Log(clip.name);
         source.PlayOneShot(clip);
-        yield return new WaitForSeconds(clip.length+1);
+        yield return new WaitForSeconds(clip.length + 1);
     }
 
-    IEnumerator AmandaWalk()
-    {
+    IEnumerator AmandaWalk() {
         Debug.Log("Amanda walk start");
         animObj.scene4AmandaObj[1].SetActive(true);
         yield return new WaitForSeconds((float)animObj.scene4AmandaPd[1].duration);
         animObj.scene4AmandaObj[1].SetActive(false);
     }
 
-    private void OnApplicationQuit()
-    {
+    private void OnApplicationQuit() {
         Debug.Log("player pref reset");
         PlayerPrefs.DeleteAll();
     }

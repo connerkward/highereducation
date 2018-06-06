@@ -22,7 +22,11 @@ public class ControllerInputHandler : MonoBehaviour {
     public static ControllerInputHandler instance;
     // Use this for initialization
     void Start() {
-        indicator = GameObject.Find("Canvas/Indicator").GetComponent<RectTransform>();
+        GameObject indicatorGO = GameObject.Find("Canvas/Indicator");
+        if (indicatorGO) {
+            indicator = indicatorGO.GetComponent<RectTransform>();
+        }
+        
         if (!instance) {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -42,7 +46,10 @@ public class ControllerInputHandler : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         if (!indicator) {
-            indicator = GameObject.Find("Canvas/Indicator").GetComponent<RectTransform>();
+            GameObject indicatorGO = GameObject.Find("Canvas/Indicator");
+            if (indicatorGO) {
+                indicator = indicatorGO.GetComponent<RectTransform>();
+            }
         }
         if (allowInput) {
             if (keyboardDebugMode) {
