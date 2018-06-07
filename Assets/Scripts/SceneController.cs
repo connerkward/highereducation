@@ -56,7 +56,7 @@ public class SceneController : MonoBehaviour {
             }
         }
         if(scene.name == "Intro") {
-            StartCoroutine(PlayDialogue(scene1Audio[0]));
+            StartCoroutine(IntroDialogue());
         }
     }
 
@@ -66,18 +66,22 @@ public class SceneController : MonoBehaviour {
         scene4Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene4");
     }
 
+    IEnumerator IntroDialogue()
+    {
+        yield return StartCoroutine(PlayDialogue(scene1Audio[0]));
+        yield return StartCoroutine(PlayDialogue(scene1Audio[1]));
+    }
     IEnumerator Scene1Events() {
         ControllerInputHandler.instance.allowInput = false;
         introMusic.Play();
         //Amanda sleeping animation
         animObj.scene1Objects[0].SetActive(true);
         animObj.scene1Pd[0].Play();
-        //play dialogues
-        yield return StartCoroutine(PlayDialogue(scene1Audio[1]));
         //amanda dreaming animation
         animObj.scene1Objects[0].SetActive(false);
         animObj.scene1Objects[1].SetActive(true);
         animObj.scene1Pd[1].Play();
+        yield return new WaitForSeconds(4);
         yield return StartCoroutine(PlayDialogue(scene1Audio[2]));
         yield return StartCoroutine(PlayDialogue(scene1Audio[3]));
 
@@ -151,7 +155,8 @@ public class SceneController : MonoBehaviour {
         yield return StartCoroutine(PlayDialogue(scene4Audio[1]));
         //pause
         yield return StartCoroutine(PlayDialogue(scene4Audio[2]));
-        yield return null;
+        yield return new WaitForSeconds(3);
+        yield return StartCoroutine(PlayDialogue(scene4Audio[3]));
     }
 
     IEnumerator PlayDialogue(AudioClip clip) {
