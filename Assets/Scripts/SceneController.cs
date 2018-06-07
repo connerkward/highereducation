@@ -75,11 +75,11 @@ public class SceneController : MonoBehaviour {
         ControllerInputHandler.instance.allowInput = false;
         introMusic.Play();
         //Amanda sleeping animation
-        animObj.scene1Objects[0].SetActive(true);
+        animObj.scene1Pd[0].gameObject.SetActive(true);
         animObj.scene1Pd[0].Play();
         //amanda dreaming animation
-        animObj.scene1Objects[0].SetActive(false);
-        animObj.scene1Objects[1].SetActive(true);
+        animObj.scene1Pd[0].gameObject.SetActive(false);
+        animObj.scene1Pd[1].gameObject.SetActive(true);
         animObj.scene1Pd[1].Play();
         yield return new WaitForSeconds(4);
         yield return StartCoroutine(PlayDialogue(scene1Audio[2]));
@@ -102,18 +102,19 @@ public class SceneController : MonoBehaviour {
     IEnumerator Scene3Events() {
         Debug.Log("Scene 3 Events coroutine");
         //animation - amanda plants
-        animObj.scene4AmandaObj[0].SetActive(true); //Amanda idle
+        animObj.scene4AmandaPd[0].gameObject.SetActive(true); //Amanda idle
         yield return StartCoroutine(PlayDialogue(scene3Audio[0]));
         //animation - flower grows
-        animObj.scene3BloomPd[0].gameObject.SetActive(true);
+        Debug.Log("bloom");
+        animObj.scene3BloomPd[0].transform.parent.gameObject.SetActive(true);
         animObj.scene3BloomPd[0].Play(); //yellow flowers
         animObj.scene3BloomPd[1].Play(); //pink roses
         yield return new WaitForSeconds((float)animObj.scene3BloomPd[1].duration);
         if (ControllerInputHandler.instance.speed > 0.5) //if chaos wilt flowers
         {
             Debug.Log("Chaos Flowers");
-            animObj.scene3BloomPd[0].gameObject.SetActive(false);
-            animObj.scene3BloomPd[1].gameObject.SetActive(true);
+            animObj.scene3BloomPd[0].transform.parent.gameObject.SetActive(false);
+            animObj.scene3BloomPd[2].transform.parent.gameObject.SetActive(true);
             animObj.scene3BloomPd[2].Play(); //wilt yellow flowers
             animObj.scene3BloomPd[3].Play(); //wilt pink flowers
             yield return new WaitForSeconds((float)animObj.scene3BloomPd[2].duration);
@@ -129,23 +130,23 @@ public class SceneController : MonoBehaviour {
         clouds.Play();
         weatherController.ExitCurrentWeather((int)Weather_Controller.WeatherType.RAIN);
         //animation - amanda walks to door
-        animObj.scene4AmandaObj[0].SetActive(false);
+        animObj.scene4AmandaPd[0].gameObject.SetActive(false);
         yield return StartCoroutine(AmandaWalk());
         //set new idle position
-        animObj.scene4AmandaObj[2].SetActive(true);
+        animObj.scene4AmandaPd[2].gameObject.SetActive(true);
         //amanda tries to open door
         // door opens
         yield return new WaitForSeconds(4);
-        animObj.scene4DoorObjects[2].SetActive(false);
+        animObj.scene4DoorPd[2].gameObject.SetActive(false);
         if (ControllerInputHandler.instance.speed < 0.5) {
             Debug.Log("Harmony Door");
-            animObj.scene4DoorObjects[0].SetActive(true);
+            animObj.scene4DoorPd[0].gameObject.SetActive(true);
             animObj.scene4DoorPd[0].Play();
             yield return new WaitForSeconds((float)animObj.scene4DoorPd[0].duration);
         } else {
             Debug.Log("Chaos Door");
-            animObj.scene4DoorObjects[0].SetActive(false);
-            animObj.scene4DoorObjects[1].SetActive(true);
+            animObj.scene4DoorPd[0].gameObject.SetActive(false);
+            animObj.scene4DoorPd[1].gameObject.SetActive(true);
             animObj.scene4DoorPd[1].Play();
             yield return new WaitForSeconds((float)animObj.scene4DoorPd[1].duration);
         }
@@ -167,9 +168,9 @@ public class SceneController : MonoBehaviour {
 
     IEnumerator AmandaWalk() {
         Debug.Log("Amanda walk start");
-        animObj.scene4AmandaObj[1].SetActive(true);
+        animObj.scene4AmandaPd[1].gameObject.SetActive(true);
         yield return new WaitForSeconds((float)animObj.scene4AmandaPd[1].duration);
-        animObj.scene4AmandaObj[1].SetActive(false);
+        animObj.scene4AmandaPd[1].gameObject.SetActive(false);
     }
 
     private void OnApplicationQuit() {

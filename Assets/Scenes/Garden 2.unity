@@ -1713,6 +1713,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4924206752874312, guid: 603e50046bb553447822bd37a814058b,
     type: 2}
   m_PrefabInternal: {fileID: 222449568}
+--- !u!320 &222449570 stripped
+PlayableDirector:
+  m_PrefabParentObject: {fileID: 320824361270079536, guid: 603e50046bb553447822bd37a814058b,
+    type: 2}
+  m_PrefabInternal: {fileID: 222449568}
 --- !u!4 &224186904 stripped
 Transform:
   m_PrefabParentObject: {fileID: 485286, guid: 52591162887af4c4f99be558de89899c, type: 2}
@@ -5164,6 +5169,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4729e2752ac38e64dbf136cc0b375dd3, type: 2}
   m_IsPrefabParent: 0
+--- !u!320 &743982624 stripped
+PlayableDirector:
+  m_PrefabParentObject: {fileID: 320676403137344960, guid: 4729e2752ac38e64dbf136cc0b375dd3,
+    type: 2}
+  m_PrefabInternal: {fileID: 743982623}
 --- !u!4 &749567076 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4505214195386040, guid: b63ba14a152cc264abd29dc4c3a6e303,
@@ -11082,6 +11092,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4284264980023112, guid: 2342bf54e116d5d488cbd2845f2a3831,
     type: 2}
   m_PrefabInternal: {fileID: 1091658867}
+--- !u!320 &1091658869 stripped
+PlayableDirector:
+  m_PrefabParentObject: {fileID: 320719809782863428, guid: 2342bf54e116d5d488cbd2845f2a3831,
+    type: 2}
+  m_PrefabInternal: {fileID: 1091658867}
 --- !u!4 &1114558369 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: fbc0d0b46fab9304894715de714d5eb5, type: 3}
@@ -14472,21 +14487,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene1Pd:
-  - {fileID: 656805332}
   - {fileID: 1353515745}
-  scene1Objects:
-  - {fileID: 656805331}
-  - {fileID: 1353515744}
+  - {fileID: 656805332}
   scene3BloomPd:
-  - {fileID: 0}
-  - {fileID: 0}
-  scene3BloomObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  scene4DoorPd: []
-  scene4DoorObjects: []
-  scene4AmandaPd: []
-  scene4AmandaObj: []
+  - {fileID: 222449570}
+  - {fileID: 743982624}
+  - {fileID: 1091658869}
+  - {fileID: 1549133715}
+  scene4DoorPd:
+  - {fileID: 1283965915}
+  - {fileID: 201382058}
+  - {fileID: 838902715}
+  scene4AmandaPd:
+  - {fileID: 165525940}
+  - {fileID: 1409463204}
+  - {fileID: 172077986}
 --- !u!1001 &1578330203
 Prefab:
   m_ObjectHideFlags: 0
