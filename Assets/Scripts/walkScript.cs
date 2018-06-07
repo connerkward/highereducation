@@ -12,10 +12,8 @@ public class walkScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(transform.position.x);
         if (transform.position.x < destX)
         {
-            Debug.Log(transform.position.x);
             transform.Translate(2*Time.deltaTime, 0, 0);
             //transform.Translate(0, Time.deltaTime, 0, Space.World);
         }
