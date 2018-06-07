@@ -34,7 +34,7 @@ public class IntroTransition : MonoBehaviour {
             overlayImage.color = new Color(c.r, c.b, c.g, 1f - timer / transitionTime);
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSeconds(SceneController.instance.GetDuration(0) - transitionTime * 2);
         StartCoroutine(SceneTransition());
     }
 }

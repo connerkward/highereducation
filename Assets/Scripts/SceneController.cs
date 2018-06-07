@@ -19,10 +19,15 @@ public class SceneController : MonoBehaviour {
     public float transitionTime;
     private Weather_Controller weatherController;
     public ParticleSystem clouds;
+    public static SceneController instance;
     // Use this for initialization
 
     private void Awake() {
+        instance = this;
         LoadAudioAssets();
+    }
+    public float GetDuration(int index) {
+        return scene1Audio[0].length;
     }
     void Start() {
         DontDestroyOnLoad(gameObject);
@@ -37,18 +42,21 @@ public class SceneController : MonoBehaviour {
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        if(scene.name == "Garden 2") {
+        source = GetComponent<AudioSource>();
+        if (scene.name == "Garden 2") {
             animObj = FindObjectOfType<AnimationObjects>();
             weatherController = FindObjectOfType<Weather_Controller>();
             overlayImage = GameObject.Find("Canvas/Overlay").GetComponent<Image>();
             Debug.Log("scenecontroller Garden 2");
-            source = GetComponent<AudioSource>();
             StartCoroutine(IntroFade());
             if (PlayerPrefs.GetInt("sceneNo") == 0) {
                 StartCoroutine(Scene1Events());
             } else if (PlayerPrefs.GetInt("sceneNo") == 1) {
                 StartCoroutine(Scene3Events());
             }
+        }
+        if(scene.name == "Intro") {
+            StartCoroutine(PlayDialogue(scene1Audio[0]));
         }
     }
 
@@ -65,7 +73,6 @@ public class SceneController : MonoBehaviour {
         animObj.scene1Objects[0].SetActive(true);
         animObj.scene1Pd[0].Play();
         //play dialogues
-        yield return StartCoroutine(PlayDialogue(scene1Audio[0]));
         yield return StartCoroutine(PlayDialogue(scene1Audio[1]));
         //amanda dreaming animation
         animObj.scene1Objects[0].SetActive(false);
