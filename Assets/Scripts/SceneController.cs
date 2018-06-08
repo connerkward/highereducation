@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.Playables;
 
 public class SceneController : MonoBehaviour {
-    public AudioSource source;
+    private AudioSource source;
     public AudioSource introMusic;
     private AudioClip[] scene1Audio;
     private AudioClip[] scene3Audio;
@@ -19,6 +19,7 @@ public class SceneController : MonoBehaviour {
     public float transitionTime;
     private Weather_Controller weatherController;
     public ParticleSystem clouds;
+    public bool skipToScene3;
     public static SceneController instance;
     // Use this for initialization
 
@@ -27,7 +28,7 @@ public class SceneController : MonoBehaviour {
         LoadAudioAssets();
     }
     public float GetDuration(int index) {
-        return scene1Audio[0].length;
+        return scene1Audio[index].length;
     }
     void Start() {
         DontDestroyOnLoad(gameObject);
@@ -44,14 +45,20 @@ public class SceneController : MonoBehaviour {
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         source = GetComponent<AudioSource>();
         if (scene.name == "Garden 2") {
+            if (skipToScene3) {
+                ControllerInputHandler.instance.allowInput = true;
+                PlayerPrefs.SetInt("sceneNo", 1);
+            }
             animObj = FindObjectOfType<AnimationObjects>();
             weatherController = FindObjectOfType<Weather_Controller>();
             overlayImage = GameObject.Find("Canvas/Overlay").GetComponent<Image>();
             Debug.Log("scenecontroller Garden 2");
             StartCoroutine(IntroFade());
             if (PlayerPrefs.GetInt("sceneNo") == 0) {
+                GameObject.Find("Canvas").SetActive(false);
                 StartCoroutine(Scene1Events());
             } else if (PlayerPrefs.GetInt("sceneNo") == 1) {
+                FindObjectOfType<SleepAnimation>().gameObject.SetActive(false);
                 StartCoroutine(Scene3Events());
             }
         }

@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class IntroTransition : MonoBehaviour {
     public float transitionTime;
     private Image overlayImage;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         overlayImage = GameObject.Find("Canvas (1)/Overlay").GetComponent<Image>();
         StartCoroutine(IntroFade());
-	}
+    }
     IEnumerator SceneTransition() {
         float timer = transitionTime;
         Color c = overlayImage.color;
@@ -34,7 +34,7 @@ public class IntroTransition : MonoBehaviour {
             overlayImage.color = new Color(c.r, c.b, c.g, 1f - timer / transitionTime);
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        yield return new WaitForSeconds(SceneController.instance.GetDuration(0) - transitionTime * 2);
+        yield return new WaitForSeconds(SceneController.instance.GetDuration(0) + SceneController.instance.GetDuration(1));
         StartCoroutine(SceneTransition());
     }
 }

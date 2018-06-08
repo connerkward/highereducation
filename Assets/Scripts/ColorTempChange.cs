@@ -28,16 +28,18 @@ public class ColorTempChange : UnityEngine.MonoBehaviour {
 
     public float bloomLowBound = 0;
     public float bloomUpBound = 0.5f;
+    private AudioSource source;
 
     // Use this for initialization
     void Start () {
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update() {
-       
         float _speed = ControllerInputHandler.instance.speed; // input 0 to 1 value
         float speedcoef = ((_speed - speedLowBound) / (speedUpBound - speedLowBound)); //speed coeficient
+        source.volume = _speed;
         //COLOR TEMP
         if (ppProfile.colorGrading.enabled == true) {
             ColorGradingModel.Settings colorSettings = ppProfile.colorGrading.basicsettings;

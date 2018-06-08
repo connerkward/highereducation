@@ -5,9 +5,10 @@ using UnityEngine;
 public class WeatherParticleController : MonoBehaviour {
     public ParticleSystem weather;
     public ParticleSystem rain;
+    private AudioSource source;
 	// Use this for initialization
 	void Start () {
-		
+        source = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -20,6 +21,10 @@ public class WeatherParticleController : MonoBehaviour {
             lifetimeColor.color = grad;
         }
         if(rain.gameObject.activeSelf && rain.isPlaying) {
+            source.volume = 0.5f + ControllerInputHandler.instance.speed / 2;
+            if (!source.isPlaying) {
+                source.Play();
+            }
             ParticleSystem.EmissionModule emissionModule = rain.emission;
             emissionModule.rate = 500 + 500 * ControllerInputHandler.instance.speed;
             var main = rain.main;
