@@ -627,7 +627,7 @@ Prefab:
     - target: {fileID: 114017582361658122, guid: 840a5463ab6a7914297b92ca4835422d,
         type: 2}
       propertyPath: skipToScene3
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1306435799163562, guid: 840a5463ab6a7914297b92ca4835422d, type: 2}
       propertyPath: m_IsActive
@@ -647,6 +647,11 @@ Prefab:
         type: 2}
       propertyPath: VelocityModule.z.minScalar
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114017582361658122, guid: 840a5463ab6a7914297b92ca4835422d,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 840a5463ab6a7914297b92ca4835422d, type: 2}
