@@ -108,14 +108,21 @@ public class SceneController : MonoBehaviour {
 
     IEnumerator Scene3Events() {
         Debug.Log("Scene 3 Events coroutine");
+        //amanda sits up 
         //animation - amanda plants
-        animObj.scene4AmandaPd[0].gameObject.SetActive(true); //Amanda idle
+        animObj.scene3AmandaPd[1].gameObject.SetActive(true);
+        animObj.scene3AmandaPd[1].Play();
+        //animObj.scene4AmandaPd[0].gameObject.SetActive(true); //Amanda idle
+        yield return new WaitForSeconds(5);
         yield return StartCoroutine(PlayDialogue(scene3Audio[0]));
+        yield return new WaitForSeconds(3);
         //animation - flower grows
         Debug.Log("bloom");
         animObj.scene3BloomPd[0].transform.parent.gameObject.SetActive(true);
         animObj.scene3BloomPd[0].Play(); //yellow flowers
         animObj.scene3BloomPd[1].Play(); //pink roses
+        animObj.scene3AmandaPd[1].Pause();
+        
         yield return new WaitForSeconds((float)animObj.scene3BloomPd[1].duration);
         if (ControllerInputHandler.instance.speed > 0.5) //if chaos wilt flowers
         {
@@ -128,7 +135,16 @@ public class SceneController : MonoBehaviour {
         }
         yield return StartCoroutine(PlayDialogue(scene3Audio[1]));
         //animation - wind blows
+
+        animObj.scene3AmandaPd[1].gameObject.SetActive(false);
+        animObj.scene3AmandaPd[2].gameObject.SetActive(true); //surprised Amanda
+        animObj.scene3AmandaPd[2].Play();
+        yield return new WaitForSeconds(2);
+        animObj.scene3AmandaPd[2].gameObject.SetActive(false);
+        animObj.scene3AmandaPd[3].gameObject.SetActive(true); //amanda stands up
         yield return StartCoroutine(PlayDialogue(scene3Audio[2]));
+        yield return new WaitForSeconds(3);
+        animObj.scene3AmandaPd[3].gameObject.SetActive(false);
         yield return StartCoroutine(Scene4Events());
     }
 
