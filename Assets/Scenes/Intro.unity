@@ -281,8 +281,8 @@ RectTransform:
   m_Father: {fileID: 185411288}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: -1, y: -1}
+  m_AnchorMax: {x: 2, y: 2}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -459,6 +459,15 @@ Prefab:
       propertyPath: isGarden
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1819884174536254, guid: dcbcbbf7672b03541a83f9a9922db013, type: 2}
+      propertyPath: m_Name
+      value: Garden Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 114276797849891866, guid: dcbcbbf7672b03541a83f9a9922db013,
+        type: 2}
+      propertyPath: volumeScale
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dcbcbbf7672b03541a83f9a9922db013, type: 2}
   m_IsPrefabParent: 0
@@ -542,6 +551,30 @@ Prefab:
     - target: {fileID: 4734492640544826, guid: 840a5463ab6a7914297b92ca4835422d, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114017582361658122, guid: 840a5463ab6a7914297b92ca4835422d,
+        type: 2}
+      propertyPath: skipToScene3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306435799163562, guid: 840a5463ab6a7914297b92ca4835422d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198949346647846204, guid: 840a5463ab6a7914297b92ca4835422d,
+        type: 2}
+      propertyPath: VelocityModule.z.scalar
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198949346647846204, guid: 840a5463ab6a7914297b92ca4835422d,
+        type: 2}
+      propertyPath: randomSeed
+      value: 1114089553
+      objectReference: {fileID: 0}
+    - target: {fileID: 198949346647846204, guid: 840a5463ab6a7914297b92ca4835422d,
+        type: 2}
+      propertyPath: VelocityModule.z.minScalar
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 840a5463ab6a7914297b92ca4835422d, type: 2}
@@ -720,6 +753,15 @@ Prefab:
     - target: {fileID: 114495411033910526, guid: a1f3e28db844c9a42904db86c2f1a09d,
         type: 2}
       propertyPath: isDream
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953781806155450, guid: a1f3e28db844c9a42904db86c2f1a09d, type: 2}
+      propertyPath: m_Name
+      value: Dream Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 114495411033910526, guid: a1f3e28db844c9a42904db86c2f1a09d,
+        type: 2}
+      propertyPath: volumeScale
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

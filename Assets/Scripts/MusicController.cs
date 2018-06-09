@@ -21,6 +21,8 @@ public class MusicController : MonoBehaviour
     //public AudioSource smooth;
     //public AudioSource leggiero;
     //public AudioSource calm;
+    [Range(0f, 1f)]
+    public float volumeScale;
     public GameObject majorMelodyGO;
     public GameObject majorCountermelodyGO;
     public GameObject majorAccompanimentGO;
@@ -152,7 +154,7 @@ public class MusicController : MonoBehaviour
         while (timer < time)
         {
             timer += Time.deltaTime;
-            audioSource.volume = 1 - timer / time;
+            audioSource.volume = volumeScale * (1 - timer / time);
             yield return new WaitForSeconds(Time.deltaTime);
         }
         audioSource.volume = 0f;
@@ -164,10 +166,10 @@ public class MusicController : MonoBehaviour
         while (timer < time)
         {
             timer += Time.deltaTime;
-            audioSource.volume = timer / time;
+            audioSource.volume = volumeScale * timer / time;
             yield return new WaitForSeconds(Time.deltaTime);
         }
-        audioSource.volume = 1f;
+        audioSource.volume = volumeScale;
     }
 
     public void PlayAccompaniment(Arrangement arrangement) {
@@ -179,7 +181,7 @@ public class MusicController : MonoBehaviour
 
     public void PlayArrangement(Arrangement arrangement) {
         foreach(AudioSource audioSource in arrangement.melody) {
-            if(audioSource.volume != GetTrackVolume(audioSource) && (audioSource.volume == 0 || audioSource.volume == 1)) {
+            if(audioSource.volume != GetTrackVolume(audioSource) && (audioSource.volume == 0 || audioSource.volume == volumeScale)) {
                 if(audioSource.volume == 0) {
                     StartCoroutine(FadeIn(audioSource, fadeInTime));
                 } else {
@@ -188,7 +190,7 @@ public class MusicController : MonoBehaviour
             }
         }
         foreach (AudioSource audioSource in arrangement.countermelody) {
-            if (audioSource.volume != GetTrackVolume(audioSource) && (audioSource.volume == 0 || audioSource.volume == 1)) {
+            if (audioSource.volume != GetTrackVolume(audioSource) && (audioSource.volume == 0 || audioSource.volume == volumeScale)) {
                 if (audioSource.volume == 0) {
                     StartCoroutine(FadeIn(audioSource, fadeInTime));
                 } else {
@@ -197,7 +199,7 @@ public class MusicController : MonoBehaviour
             }
         }
         foreach (AudioSource audioSource in arrangement.accompaniment) {
-            if (audioSource.volume != GetTrackVolume(audioSource) && (audioSource.volume == 0 || audioSource.volume == 1)) {
+            if (audioSource.volume != GetTrackVolume(audioSource) && (audioSource.volume == 0 || audioSource.volume == volumeScale)) {
                 if (audioSource.volume == 0) {
                     StartCoroutine(FadeIn(audioSource, fadeInTime));
                 } else {
@@ -284,12 +286,12 @@ public class MusicController : MonoBehaviour
     //    return (2 / Mathf.Sqrt(2 * Mathf.PI)) * Mathf.Pow((float)Math.E, -3 * (Mathf.Pow(ControllerInputHandler.instance.speed - mean, 2)));
     //}
 
-    int GetTrackVolume(AudioSource audioSource) {
+    float GetTrackVolume(AudioSource audioSource) {
         if (audioSource.name.Contains("major")) {
-            return ControllerInputHandler.instance.speed <= 0.5f - (Array.FindIndex(majorArrangement.melody, element => element == audioSource) + Array.FindIndex(majorArrangement.countermelody, element => element == audioSource) + Array.FindIndex(majorArrangement.accompaniment, element => element == audioSource) + 2) * 0.5f / (majorArrangement.melody.Length - 1) ? 1 : 0;
+            return ControllerInputHandler.instance.speed <= 0.5f - (Array.FindIndex(majorArrangement.melody, element => element == audioSource) + Array.FindIndex(majorArrangement.countermelody, element => element == audioSource) + Array.FindIndex(majorArrangement.accompaniment, element => element == audioSource) + 2) * 0.5f / (majorArrangement.melody.Length - 1) ? volumeScale : 0;
 
         } else if (audioSource.name.Contains("minor")) {
-            return ControllerInputHandler.instance.speed >= 0.5f + (Array.FindIndex(minorArrangement.melody, element => element == audioSource) + Array.FindIndex(minorArrangement.countermelody, element => element == audioSource) + Array.FindIndex(minorArrangement.accompaniment, element => element == audioSource) + 2) * 0.5f / (minorArrangement.melody.Length - 1) ? 1 : 0;
+            return ControllerInputHandler.instance.speed >= 0.5f + (Array.FindIndex(minorArrangement.melody, element => element == audioSource) + Array.FindIndex(minorArrangement.countermelody, element => element == audioSource) + Array.FindIndex(minorArrangement.accompaniment, element => element == audioSource) + 2) * 0.5f / (minorArrangement.melody.Length - 1) ? volumeScale : 0;
         }
         return 0;
     }
