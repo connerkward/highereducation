@@ -42,7 +42,7 @@ public class DreamSceneController : MonoBehaviour {
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         if (scene.name == "garden_dream") {
             overlayImage = GameObject.Find("Canvas/Overlay").GetComponent<Image>();
-            LoadAnimations();
+            StartCoroutine(LoadAnimations(scene));
             Debug.Log("Loaded Garden Dream");
             source = GetComponent<AudioSource>();
             StartCoroutine(IntroFade());
@@ -142,8 +142,10 @@ public class DreamSceneController : MonoBehaviour {
         SceneManager.LoadScene("Garden 2");
     }
 
-    private void LoadAnimations()
+    IEnumerator LoadAnimations(Scene scene)
     {
+        yield return new WaitForEndOfFrame();
+        dadObj = new List<GameObject>();
         dadObj.Add(GameObject.Find("Dad"));
         dadObj.Add(GameObject.Find("Dadread"));
         dadObj[0].SetActive(false);

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 
 public class walkScript : MonoBehaviour {
-    private float destX = 315.0f;
+    private float destX = 314.5f;
     // Use this for initialization
     void Start () {
 
