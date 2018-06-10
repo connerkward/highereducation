@@ -100,7 +100,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.30122155
+        intensity: 0.375
         threshold: 1
         softKnee: 0.521
         radius: 4
@@ -121,10 +121,10 @@ MonoBehaviour:
         neutralWhiteClip: 10
       basic:
         postExposure: 0
-        temperature: 5.1221533
+        temperature: 7.5
         tint: 0
         hueShift: 0
-        saturation: 1
+        saturation: 0.793
         contrast: 1
       channelMixer:
         red: {x: 1, y: 0, z: 0}
