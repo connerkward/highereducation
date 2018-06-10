@@ -70,15 +70,15 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RampSmooth: 1
-    - _RampThreshold: 0
+    - _RampSmooth: 0.741
+    - _RampThreshold: 0.549
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.641, g: 0.375, b: 0.266, a: 1}
+    - _Color: {r: 0.5661765, g: 0.32993656, b: 0.23313147, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _HColor: {r: 0.785, g: 0.785, b: 0.785, a: 1}
     - _SColor: {r: 0.195, g: 0.195, b: 0.195, a: 1}
