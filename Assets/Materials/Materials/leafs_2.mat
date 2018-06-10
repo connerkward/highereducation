@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: leafs_2
-  m_Shader: {fileID: 4800000, guid: f8d49205b3b0a644195633020367689d, type: 3}
-  m_ShaderKeywords: TCP2_DISABLE_WRAPPED_LIGHT _EMISSION
+  m_Shader: {fileID: 4800000, guid: ccfc7d68845db8341944b3091b59be55, type: 3}
+  m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -58,6 +58,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 948e1b7327c293a4081ba3c18eaab19f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AO: 0
     - _BaseLight: 1
@@ -74,9 +78,9 @@ Material:
     - _Occlusion: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RampSmooth: 0
+    - _RampSmooth: 0.01
     - _RampSmoothAdd: 0.75
-    - _RampThreshold: 0
+    - _RampThreshold: 0.162
     - _RimMax: 0.85
     - _RimMin: 0.6
     - _RimStrength: 0.5
@@ -96,8 +100,8 @@ Material:
     - _Color: {r: 0.18422303, g: 0.46323532, b: 0.11580883, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
-    - _HColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.6}
-    - _SColor: {r: 0.195, g: 0.195, b: 0.195, a: 1}
+    - _SColor: {r: 0.5808823, g: 0.5808823, b: 0.5808823, a: 1}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}

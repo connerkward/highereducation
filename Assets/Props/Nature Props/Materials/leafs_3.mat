@@ -70,7 +70,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RampSmooth: 0
+    - _RampSmooth: 0.079
     - _RampSmoothAdd: 1
     - _RampThreshold: 0
     - _RimMax: 0.85
