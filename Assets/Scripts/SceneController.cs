@@ -208,6 +208,7 @@ public class SceneController : MonoBehaviour {
         yield return StartCoroutine(PlayDialogue(scene4Audio[2])); //thankyou dad
         yield return new WaitForSeconds(3);
         yield return StartCoroutine(PlayDialogue(scene4Audio[3])); //archangel congrats
+        yield return StartCoroutine(PlayDialogue(scene4Audio[4])); //archangel play in garden
     }
 
     IEnumerator PlayDialogue(AudioClip clip) {
