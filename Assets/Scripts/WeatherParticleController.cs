@@ -21,7 +21,7 @@ public class WeatherParticleController : MonoBehaviour {
             lifetimeColor.color = grad;
         }
         if(rain.gameObject.activeSelf && rain.isPlaying) {
-            source.volume = 0.5f + ControllerInputHandler.instance.speed / 2;
+            source.volume = (0.5f + ControllerInputHandler.instance.speed / 2) - 0.4f;
             if (!source.isPlaying) {
                 source.Play();
             }
