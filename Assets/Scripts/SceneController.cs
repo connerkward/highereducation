@@ -108,11 +108,19 @@ public class SceneController : MonoBehaviour {
 
     IEnumerator Scene3Events() {
         Debug.Log("Scene 3 Events coroutine");
+        //Amanda sleeping animation
+        animObj.scene1Pd[0].gameObject.SetActive(true);
+        animObj.scene1Pd[0].Play();
+        yield return new WaitForSeconds(2);
         //amanda sits up 
+        animObj.scene1Pd[0].gameObject.SetActive(false);
+        animObj.scene3AmandaPd[0].gameObject.SetActive(true);
+        animObj.scene3AmandaPd[0].Play();
+        yield return new WaitForSeconds((float)animObj.scene3AmandaPd[0].duration);
         //animation - amanda plants
+        animObj.scene3AmandaPd[0].gameObject.SetActive(false);
         animObj.scene3AmandaPd[1].gameObject.SetActive(true);
         animObj.scene3AmandaPd[1].Play();
-        //animObj.scene4AmandaPd[0].gameObject.SetActive(true); //Amanda idle
         yield return new WaitForSeconds(5);
         yield return StartCoroutine(PlayDialogue(scene3Audio[0]));
         yield return new WaitForSeconds(3);
@@ -133,18 +141,24 @@ public class SceneController : MonoBehaviour {
             animObj.scene3BloomPd[3].Play(); //wilt pink flowers
             yield return new WaitForSeconds((float)animObj.scene3BloomPd[2].duration);
         }
-        yield return StartCoroutine(PlayDialogue(scene3Audio[1]));
-        //animation - wind blows
-
         animObj.scene3AmandaPd[1].gameObject.SetActive(false);
         animObj.scene3AmandaPd[2].gameObject.SetActive(true); //surprised Amanda
         animObj.scene3AmandaPd[2].Play();
+        yield return StartCoroutine(PlayDialogue(scene3Audio[1]));
         yield return new WaitForSeconds(2);
+        //animation - wind blows
+
+
+
         animObj.scene3AmandaPd[2].gameObject.SetActive(false);
         animObj.scene3AmandaPd[3].gameObject.SetActive(true); //amanda stands up
+        animObj.scene3AmandaPd[3].Play();
         yield return StartCoroutine(PlayDialogue(scene3Audio[2]));
-        yield return new WaitForSeconds(3);
         animObj.scene3AmandaPd[3].gameObject.SetActive(false);
+        animObj.scene3AmandaPd[4].gameObject.SetActive(true); //amanda crosses arms
+        animObj.scene3AmandaPd[4].Play();
+        yield return new WaitForSeconds((float)animObj.scene3AmandaPd[4].duration);
+        animObj.scene3AmandaPd[4].gameObject.SetActive(false);
         yield return StartCoroutine(Scene4Events());
     }
 
@@ -155,9 +169,12 @@ public class SceneController : MonoBehaviour {
         //animation - amanda walks to door
         animObj.scene4AmandaPd[0].gameObject.SetActive(false);
         yield return StartCoroutine(AmandaWalk());
-        //set new idle position
-        animObj.scene4AmandaPd[2].gameObject.SetActive(true);
         //amanda tries to open door
+        animObj.scene4AmandaPd[2].gameObject.SetActive(true);
+        animObj.scene4AmandaPd[2].Play();
+        yield return new WaitForSeconds((float)animObj.scene4AmandaPd[2].duration);
+        
+
         // door opens
         yield return new WaitForSeconds(4);
         animObj.scene4DoorPd[2].gameObject.SetActive(false);
@@ -175,12 +192,22 @@ public class SceneController : MonoBehaviour {
         }
 
         yield return StartCoroutine(PlayDialogue(scene4Audio[0]));
-        //animation - reaches out to touch player, rain shield
-        yield return StartCoroutine(PlayDialogue(scene4Audio[1]));
-        //pause
-        yield return StartCoroutine(PlayDialogue(scene4Audio[2]));
+        //animation - reaches out to touch player
+        animObj.scene4AmandaPd[2].gameObject.SetActive(false);
+        animObj.scene4AmandaPd[4].gameObject.SetActive(true);
+        animObj.scene4AmandaPd[4].Play();
+        yield return new WaitForSeconds((float)animObj.scene4AmandaPd[4].duration);
+
+        //rain shield appears
+        animObj.scene4AmandaPd[4].gameObject.SetActive(false);
+        animObj.scene4AmandaPd[5].gameObject.SetActive(true); //amanda smile
+        animObj.scene4AmandaPd[5].Play();
         yield return new WaitForSeconds(3);
-        yield return StartCoroutine(PlayDialogue(scene4Audio[3]));
+        yield return StartCoroutine(PlayDialogue(scene4Audio[1]));
+        
+        yield return StartCoroutine(PlayDialogue(scene4Audio[2])); //thankyou dad
+        yield return new WaitForSeconds(3);
+        yield return StartCoroutine(PlayDialogue(scene4Audio[3])); //archangel congrats
     }
 
     IEnumerator PlayDialogue(AudioClip clip) {

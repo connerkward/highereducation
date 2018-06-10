@@ -1,0 +1,179 @@
+fileFormatVersion: 2
+guid: 7c0521d4f72b47c4da304dcc03f2e425
+timeCreated: 1528589105
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Cross
+    100002: //RootNode
+    100004: Cross_0000
+    100006: Cross_0001
+    100008: Cross_0002
+    100010: Cross_0003
+    100012: Cross_0004
+    100014: Cross_0005
+    100016: Cross_0006
+    100018: Cross_0007
+    100020: Cross_0008
+    100022: Cross_0009
+    100024: Cross_0010
+    100026: Root
+    400000: Cross
+    400002: //RootNode
+    400004: Cross_0000
+    400006: Cross_0001
+    400008: Cross_0002
+    400010: Cross_0003
+    400012: Cross_0004
+    400014: Cross_0005
+    400016: Cross_0006
+    400018: Cross_0007
+    400020: Cross_0008
+    400022: Cross_0009
+    400024: Cross_0010
+    400026: Root
+    2100000: No Name
+    2300000: Cross_0000
+    2300002: Cross_0001
+    2300004: Cross_0002
+    2300006: Cross_0003
+    2300008: Cross_0004
+    2300010: Cross_0005
+    2300012: Cross_0006
+    2300014: Cross_0007
+    2300016: Cross_0008
+    2300018: Cross_0009
+    2300020: Cross_0010
+    3300000: Cross_0000
+    3300002: Cross_0001
+    3300004: Cross_0002
+    3300006: Cross_0003
+    3300008: Cross_0004
+    3300010: Cross_0005
+    3300012: Cross_0006
+    3300014: Cross_0007
+    3300016: Cross_0008
+    3300018: Cross_0009
+    3300020: Cross_0010
+    4300000: Cross_0000
+    4300002: Cross_0001
+    4300004: Cross_0002
+    4300006: Cross_0003
+    4300008: Cross_0004
+    4300010: Cross_0005
+    4300012: Cross_0006
+    4300014: Cross_0007
+    4300016: Cross_0008
+    4300018: Cross_0009
+    4300020: Cross_0010
+    7400000: amanda_cross
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: amanda_cross
+      takeName: anim_stack
+      firstFrame: 0
+      lastFrame: 28
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

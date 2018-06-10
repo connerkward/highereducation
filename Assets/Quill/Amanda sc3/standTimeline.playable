@@ -56,8 +56,8 @@ MonoBehaviour:
   - m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: 114182508508157990}
-    m_Duration: 2.2
-    m_TimeScale: 0.3
+    m_Duration: 1.32
+    m_TimeScale: 0.5
     m_ParentTrack: {fileID: 114998099816676890}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
