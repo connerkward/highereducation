@@ -11,6 +11,8 @@ public class DreamSceneController : MonoBehaviour {
     public AudioClip[] scene2p3Audio;
     public AudioClip[] scene2p4Audio;
 
+    private List<GameObject> dadObj;
+
     public float delay;
     public float waitTime;
     public float transitionTime;
@@ -23,6 +25,7 @@ public class DreamSceneController : MonoBehaviour {
         scene2p2Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene2p2");
         scene2p3Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene2p3");
         scene2p4Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene2p4");
+
     }
 
     void Start () {
@@ -39,6 +42,7 @@ public class DreamSceneController : MonoBehaviour {
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         if (scene.name == "garden_dream") {
             overlayImage = GameObject.Find("Canvas/Overlay").GetComponent<Image>();
+            LoadAnimations();
             Debug.Log("Loaded Garden Dream");
             source = GetComponent<AudioSource>();
             StartCoroutine(IntroFade());
@@ -56,7 +60,7 @@ public class DreamSceneController : MonoBehaviour {
         {
             yield return StartCoroutine(PlayDialogue(clip));
         }
-        yield return new WaitUntil(()=> ControllerInputHandler.instance.speed < 0.01f);
+        //yield return new WaitUntil(()=> ControllerInputHandler.instance.speed < 0.01f);
         yield return StartCoroutine(Scene2p2Events()); ;
     }
 
@@ -67,13 +71,15 @@ public class DreamSceneController : MonoBehaviour {
         {
             yield return StartCoroutine(PlayDialogue(clip));
         }
-        yield return new WaitUntil(() => ControllerInputHandler.instance.speed > 0.99f);
+        //yield return new WaitUntil(() => ControllerInputHandler.instance.speed > 0.99f);
         yield return StartCoroutine(Scene2p3Events());
     }
 
     IEnumerator Scene2p3Events()
     {
         Debug.Log("scene2p3 Events");
+        //amanda and father watching stars
+        dadObj[0].SetActive(true);
         foreach (AudioClip clip in scene2p3Audio)
         {
             yield return StartCoroutine(PlayDialogue(clip));
@@ -83,18 +89,32 @@ public class DreamSceneController : MonoBehaviour {
 
     IEnumerator Scene2p4Events()
     {
+        dadObj[0].SetActive(false);
+        dadObj[1].SetActive(true);
         Debug.Log("scene2p4 Events");
         yield return StartCoroutine(PlayDialogue(scene2p4Audio[0]));
         if (ControllerInputHandler.instance.speed<0.5)
         {
-            yield return StartCoroutine(PlayDialogue(scene2p4Audio[1]));
+            yield return StartCoroutine(PlayDialogue(scene2p4Audio[1]));  
+        }
+        else
+        {
+            yield return StartCoroutine(PlayDialogue(scene2p4Audio[4]));  
+        }
+        if (ControllerInputHandler.instance.speed < 0.5)
+        {
             yield return StartCoroutine(PlayDialogue(scene2p4Audio[2]));
+        }
+        else
+        {
+            yield return StartCoroutine(PlayDialogue(scene2p4Audio[5]));
+        }
+        if (ControllerInputHandler.instance.speed < 0.5)
+        {
             yield return StartCoroutine(PlayDialogue(scene2p4Audio[3]));
         }
         else
         {
-            yield return StartCoroutine(PlayDialogue(scene2p4Audio[4]));
-            yield return StartCoroutine(PlayDialogue(scene2p4Audio[5]));
             yield return StartCoroutine(PlayDialogue(scene2p4Audio[6]));
         }
         yield return SceneTransition();
@@ -122,10 +142,13 @@ public class DreamSceneController : MonoBehaviour {
         SceneManager.LoadScene("Garden 2");
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
+    private void LoadAnimations()
+    {
+        dadObj.Add(GameObject.Find("Dad"));
+        dadObj.Add(GameObject.Find("Dadread"));
+        dadObj[0].SetActive(false);
+        dadObj[1].SetActive(false);
+    }
 
     private void OnApplicationQuit()
     {
