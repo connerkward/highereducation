@@ -629,6 +629,12 @@ Prefab:
       propertyPath: rainShield
       value: 
       objectReference: {fileID: 299596678}
+    - target: {fileID: 114017582361658122, guid: 840a5463ab6a7914297b92ca4835422d,
+        type: 2}
+      propertyPath: powerball
+      value: 
+      objectReference: {fileID: 1554675966654078, guid: f8774295c6fcb6c48a10c5641ac88834,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 840a5463ab6a7914297b92ca4835422d, type: 2}
   m_IsPrefabParent: 0
