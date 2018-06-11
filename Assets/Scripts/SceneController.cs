@@ -136,6 +136,7 @@ public class SceneController : MonoBehaviour {
         yield return StartCoroutine(PlayDialogue(scene3Audio[0]));
         yield return new WaitForSeconds(3);
         // powerball
+        animObj.scene3pPowerball[0].gameObject.SetActive(true);
         animObj.scene3pPowerball[0].Play();
 
 
@@ -234,6 +235,7 @@ public class SceneController : MonoBehaviour {
         yield return StartCoroutine(PlayDialogue(scene4Audio[4])); //archangel play in garden
         yield return new WaitForSeconds(3);
         // credits
+        animObj.scene4Credits[0].gameObject.SetActive(true);
         animObj.scene4Credits[0].Play();
         // creditscam
 

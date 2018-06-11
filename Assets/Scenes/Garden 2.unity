@@ -3301,7 +3301,7 @@ Transform:
   - {fileID: 1351619132}
   - {fileID: 1915454664}
   m_Father: {fileID: 1572522904}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -63, z: 0}
 --- !u!1001 &335244317
 Prefab:
@@ -4865,12 +4865,14 @@ PlayableDirector:
   m_GameObject: {fileID: 453186683}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 0}
+  m_PlayableAsset: {fileID: 11400000, guid: ca0326a7c4fc03b4fb5cfcbe4169aefc, type: 2}
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: 114511412613586168, guid: ca0326a7c4fc03b4fb5cfcbe4169aefc, type: 2}
+    value: {fileID: 453186683}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &461595149
@@ -5154,6 +5156,47 @@ GameObject:
   m_PrefabParentObject: {fileID: 1976213082323926, guid: 4729e2752ac38e64dbf136cc0b375dd3,
     type: 2}
   m_PrefabInternal: {fileID: 1525009365}
+--- !u!1 &479788108 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100004, guid: 126d619cf4daa52469682f85c1378b4a, type: 2}
+  m_PrefabInternal: {fileID: 1870483896}
+--- !u!320 &479788109
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 479788108}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: e81f3b30e1336844eb070b24048805ee, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 114133135072228838, guid: e27c046056924204599deeda8e5dd6b2, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 114480461085876936, guid: e81f3b30e1336844eb070b24048805ee, type: 2}
+    value: {fileID: 479788108}
+  m_ExposedReferences:
+    m_References: []
+--- !u!95 &479788110
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 479788108}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d45971401d45a014c80a86971275a4e6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &487714387
 Prefab:
   m_ObjectHideFlags: 0
@@ -16696,7 +16739,7 @@ Transform:
   - {fileID: 1632107901}
   - {fileID: 841482104}
   m_Father: {fileID: 1572522904}
-  m_RootOrder: 17
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1523353970 stripped
 Transform:
@@ -17473,6 +17516,7 @@ Transform:
   m_LocalPosition: {x: 308.3211, y: 5.722368, z: 323.54785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 325368207}
   - {fileID: 656805333}
   - {fileID: 1283965916}
   - {fileID: 201382056}
@@ -17486,13 +17530,12 @@ Transform:
   - {fileID: 413545242}
   - {fileID: 425159716}
   - {fileID: 1353515747}
-  - {fileID: 325368207}
   - {fileID: 1529198644}
+  - {fileID: 1514627569}
   - {fileID: 1409463206}
   - {fileID: 628391662}
-  - {fileID: 1514627569}
-  - {fileID: 172898104}
   - {fileID: 453186682}
+  - {fileID: 172898104}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17533,10 +17576,10 @@ MonoBehaviour:
   - {fileID: 413545241}
   - {fileID: 425159718}
   scene3pPowerball:
-  - {fileID: 1228329870}
+  - {fileID: 172898106}
   scene4Credits:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 453186684}
+  - {fileID: 1228329870}
 --- !u!1001 &1578330203
 Prefab:
   m_ObjectHideFlags: 0
