@@ -10,6 +10,7 @@ public class DreamSceneController : MonoBehaviour {
     public AudioClip[] scene2p2Audio;
     public AudioClip[] scene2p3Audio;
     public AudioClip[] scene2p4Audio;
+    private AudioClip[] sfx;
 
     private List<GameObject> dadObj;
     private List<GameObject> amandaObj;
@@ -35,9 +36,10 @@ public class DreamSceneController : MonoBehaviour {
         scene2p2Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene2p2");
         scene2p3Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene2p3");
         scene2p4Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene2p4");
-        
+        sfx = Resources.LoadAll<AudioClip>("Audio/sfx/dream");
 
-}
+
+    }
 
     void Start () {
         DontDestroyOnLoad(gameObject);
@@ -106,6 +108,7 @@ public class DreamSceneController : MonoBehaviour {
 
     IEnumerator Scene2p3Events()
     {
+        StartCoroutine(PlayDialogue(sfx[0]));
         yield return StartCoroutine(MoveCamera(gardenCam, gardenCamY));
         Debug.Log("scene2p3 Events");
         //amanda and father watching stars
