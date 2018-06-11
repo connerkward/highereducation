@@ -94,7 +94,7 @@ public class SceneController : MonoBehaviour {
 
     IEnumerator IntroDialogue()
     {
-        //yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return StartCoroutine(PlayDialogue(scene1Audio[0]));
         yield return StartCoroutine(PlayDialogue(scene1Audio[1]));
     }
@@ -224,11 +224,12 @@ public class SceneController : MonoBehaviour {
         yield return StartCoroutine(PlayDialogue(scene4Audio[0]));
         //amanda walks from door to player
         animObj.scene4AmandaPd[2].gameObject.SetActive(false);
-        animObj.scene4AmandaPd[3].gameObject.SetActive(true);
+        //animObj.scene4AmandaPd[3].gameObject.SetActive(true);
         //animObj.scene4AmandaPd[3].Play();
-        yield return new WaitForSeconds((float)animObj.scene4AmandaPd[3].duration);
+        // yield return new WaitForSeconds((float)animObj.scene4AmandaPd[3].duration);
         //animation - reaches out to touch player
-        animObj.scene4AmandaPd[3].gameObject.SetActive(false);
+        // animObj.scene4AmandaPd[3].gameObject.SetActive(false);
+        
         animObj.scene4AmandaPd[4].gameObject.SetActive(true);
         animObj.scene4AmandaPd[4].Play();
         yield return new WaitForSeconds((float)animObj.scene4AmandaPd[4].duration);

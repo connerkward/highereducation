@@ -77,15 +77,15 @@ public class DreamSceneController : MonoBehaviour {
         {
             yield return StartCoroutine(PlayDialogue(scene2p1Audio[i]));
         }
-        float timer = waitTime;
-        Color c = overlayImage.color;
-        overlayImage.enabled = true;
-        while (timer > 0)
-        {
-            timer -= Time.deltaTime;
-            overlayImage.color = new Color(c.r, c.b, c.g, 1f - timer / waitTime);
-            //yield return new WaitForSeconds(Time.deltaTime);
-        }
+        //float timer = waitTime;
+        //Color c = overlayImage.color;
+        //overlayImage.enabled = true;
+        //while (timer > 0)
+        //{
+        //    timer -= Time.deltaTime;
+        //    overlayImage.color = new Color(c.r, c.b, c.g, 1f - timer / waitTime);
+        //    //yield return new WaitForSeconds(Time.deltaTime);
+        //}
         for (int i = 2; i < 6; i++)
         {
             yield return StartCoroutine(PlayDialogue(scene2p1Audio[i]));

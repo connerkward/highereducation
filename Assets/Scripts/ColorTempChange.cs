@@ -27,7 +27,7 @@ public class ColorTempChange : UnityEngine.MonoBehaviour {
     public float windTurbUpBound = 1.3f;
 
     public float bloomLowBound = 0;
-    public float bloomUpBound = 0.5f;
+    public float bloomUpBound = 0.1f;
     private AudioSource source;
 
     // Use this for initialization
