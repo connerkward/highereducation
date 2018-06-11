@@ -98,7 +98,7 @@ public class SceneController : MonoBehaviour {
         yield return StartCoroutine(PlayDialogue(scene1Audio[1]));
     }
     IEnumerator Scene1Events() {
-        animObj.scene4Credits[1].gameObject.SetActive(false);
+        //animObj.scene4Credits[1].gameObject.SetActive(false);
         ControllerInputHandler.instance.allowInput = false;
         introMusic.Play();
         //Amanda sleeping animation
@@ -136,7 +136,7 @@ public class SceneController : MonoBehaviour {
         animObj.scene1Pd[0].gameObject.SetActive(false);
         animObj.scene3AmandaPd[0].gameObject.SetActive(true);
         animObj.scene3AmandaPd[0].Play();
-        yield return new WaitForSeconds((float)animObj.scene3AmandaPd[0].duration);
+        yield return new WaitForSeconds((float)animObj.scene3AmandaPd[0].duration+2);
         //animation - amanda plants
         animObj.scene3AmandaPd[0].gameObject.SetActive(false);
         animObj.scene3AmandaPd[1].gameObject.SetActive(true);
@@ -153,8 +153,9 @@ public class SceneController : MonoBehaviour {
         animObj.scene3BloomPd[0].transform.parent.gameObject.SetActive(true);
         animObj.scene3BloomPd[0].Play(); //yellow flowers
         animObj.scene3BloomPd[1].Play(); //pink roses
-        yield return StartCoroutine(PlayDialogue(sfx[0]));
         animObj.scene3AmandaPd[1].Pause();
+        StartCoroutine(PlayDialogue(sfx[0]));
+        
         
         yield return new WaitForSeconds((float)animObj.scene3BloomPd[1].duration);
         if (ControllerInputHandler.instance.speed > 0.5) //if chaos wilt flowers
@@ -178,7 +179,7 @@ public class SceneController : MonoBehaviour {
         animObj.scene3AmandaPd[2].gameObject.SetActive(false);
         animObj.scene3AmandaPd[3].gameObject.SetActive(true); //amanda stands up
         animObj.scene3AmandaPd[3].Play();
-        yield return StartCoroutine(PlayDialogue(scene3Audio[2]));
+        StartCoroutine(PlayDialogue(scene3Audio[2]));
         animObj.scene3AmandaPd[3].gameObject.SetActive(false);
         animObj.scene3AmandaPd[4].gameObject.SetActive(true); //amanda crosses arms
         animObj.scene3AmandaPd[4].Play();
@@ -195,6 +196,7 @@ public class SceneController : MonoBehaviour {
         animObj.scene4AmandaPd[0].gameObject.SetActive(false);
         yield return StartCoroutine(AmandaWalk());
         //amanda tries to open door
+        StartCoroutine(PlayDialogue(sfx[3]));
         animObj.scene4AmandaPd[2].gameObject.SetActive(true);
         animObj.scene4AmandaPd[2].Play();
         yield return new WaitForSeconds((float)animObj.scene4AmandaPd[2].duration);
@@ -211,7 +213,7 @@ public class SceneController : MonoBehaviour {
             yield return new WaitForSeconds((float)animObj.scene4DoorPd[0].duration);
         } else {
             Debug.Log("Chaos Door");
-            animObj.scene4DoorPd[0].gameObject.SetActive(false);
+            //animObj.scene4DoorPd[0].gameObject.SetActive(false);
             animObj.scene4DoorPd[1].gameObject.SetActive(true);
             yield return StartCoroutine(PlayDialogue(sfx[2]));
             animObj.scene4DoorPd[1].Play();
@@ -219,13 +221,19 @@ public class SceneController : MonoBehaviour {
         }
 
         yield return StartCoroutine(PlayDialogue(scene4Audio[0]));
-        //animation - reaches out to touch player
+        //amanda walks from door to player
         animObj.scene4AmandaPd[2].gameObject.SetActive(false);
+        animObj.scene4AmandaPd[3].gameObject.SetActive(true);
+        //animObj.scene4AmandaPd[3].Play();
+        yield return new WaitForSeconds((float)animObj.scene4AmandaPd[3].duration);
+        //animation - reaches out to touch player
+        animObj.scene4AmandaPd[3].gameObject.SetActive(false);
         animObj.scene4AmandaPd[4].gameObject.SetActive(true);
         animObj.scene4AmandaPd[4].Play();
         yield return new WaitForSeconds((float)animObj.scene4AmandaPd[4].duration);
 
         //rain shield appears
+        //yield return new WaitForSeconds(2);
         rainShield.SetActive(true);
         animObj.scene4AmandaPd[4].gameObject.SetActive(false);
         animObj.scene4AmandaPd[5].gameObject.SetActive(true); //amanda smile
@@ -235,6 +243,10 @@ public class SceneController : MonoBehaviour {
         yield return StartCoroutine(PlayDialogue(scene4Audio[2])); //thankyou dad
         rainShield.SetActive(false);
         yield return new WaitForSeconds(3);
+
+        animObj.scene4AmandaPd[5].gameObject.SetActive(false);
+        animObj.scene4AmandaPd[6].gameObject.SetActive(true);
+        animObj.scene4AmandaPd[6].Play(); //amanda sits in the garden
         yield return StartCoroutine(PlayDialogue(scene4Audio[3])); //archangel congrats
         yield return StartCoroutine(PlayDialogue(scene4Audio[4])); //archangel play in garden
         yield return new WaitForSeconds(3);
@@ -242,7 +254,7 @@ public class SceneController : MonoBehaviour {
         animObj.scene4Credits[0].gameObject.SetActive(true);
         animObj.scene4Credits[0].Play();
         // creditscam
-        animObj.scene4Credits[1].gameObject.SetActive(true);
+        //animObj.scene4Credits[1].gameObject.SetActive(true);
     }
 
     IEnumerator PlayDialogue(AudioClip clip) {
@@ -257,6 +269,7 @@ public class SceneController : MonoBehaviour {
         yield return new WaitForSeconds((float)animObj.scene4AmandaPd[1].duration);
         animObj.scene4AmandaPd[1].gameObject.SetActive(false);
     }
+
 
     private void OnApplicationQuit() {
         Debug.Log("player pref reset");

@@ -73,7 +73,7 @@ public class DreamSceneController : MonoBehaviour {
     {
         Debug.Log("scene2p1 Events");
 
-        for (int i = 0;i<3;i++)
+        for (int i = 0;i<2;i++)
         {
             yield return StartCoroutine(PlayDialogue(scene2p1Audio[i]));
         }
@@ -84,9 +84,9 @@ public class DreamSceneController : MonoBehaviour {
         {
             timer -= Time.deltaTime;
             overlayImage.color = new Color(c.r, c.b, c.g, 1f - timer / waitTime);
-            yield return new WaitForSeconds(Time.deltaTime);
+            //yield return new WaitForSeconds(Time.deltaTime);
         }
-        for (int i = 3; i < 6; i++)
+        for (int i = 2; i < 6; i++)
         {
             yield return StartCoroutine(PlayDialogue(scene2p1Audio[i]));
         }
