@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeatherParticleController : MonoBehaviour {
     public ParticleSystem weather;
     public ParticleSystem rain;
-    public ParticleSystem leaves;
+    //public ParticleSystem leaves;
     private AudioSource source;
 	// Use this for initialization
 	void Start () {
@@ -32,10 +32,10 @@ public class WeatherParticleController : MonoBehaviour {
             main.startSize = 0.75f + ControllerInputHandler.instance.speed / 4;
         }
 
-        if (leaves.isPlaying)
-        {
-            ParticleSystem.EmissionModule emissionModule = leaves.emission;
-            emissionModule.rateOverTime = 25 + 25 * ControllerInputHandler.instance.speed;
-        }
+        //if (leaves.isPlaying)
+        //{
+        //    ParticleSystem.EmissionModule emissionModule = leaves.emission;
+        //    emissionModule.rateOverTime = 25 + 25 * ControllerInputHandler.instance.speed;
+        //}
 	}
 }
