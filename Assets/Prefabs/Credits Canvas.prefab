@@ -168,7 +168,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6ed7389dc6cc157418355b24d4ed743d, type: 3}
-    m_FontSize: 100
+    m_FontSize: 80
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
@@ -197,7 +197,7 @@ MonoBehaviour:
     Composer
 
 
-'
+    Voice Actors'
 --- !u!114 &114133529090981728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,7 +219,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6ed7389dc6cc157418355b24d4ed743d, type: 3}
-    m_FontSize: 100
+    m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -248,7 +248,14 @@ MonoBehaviour:
     Conner Ward
 
 
-    Yihui Li
+    Yihui Liu
+
+
+    Archana Senthilkumar
+
+    Joshua Tanenbaum
+
+    Tim Kashani
 
 '
 --- !u!114 &114212127990088962

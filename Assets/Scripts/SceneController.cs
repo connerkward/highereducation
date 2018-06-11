@@ -205,12 +205,11 @@ public class SceneController : MonoBehaviour {
         rainShield.SetActive(true);
         animObj.scene4AmandaPd[4].gameObject.SetActive(false);
         animObj.scene4AmandaPd[5].gameObject.SetActive(true); //amanda smile
-        rainShield.SetActive(false);
         animObj.scene4AmandaPd[5].Play();
         yield return new WaitForSeconds(3);
         yield return StartCoroutine(PlayDialogue(scene4Audio[1]));
-        
         yield return StartCoroutine(PlayDialogue(scene4Audio[2])); //thankyou dad
+        rainShield.SetActive(false);
         yield return new WaitForSeconds(3);
         yield return StartCoroutine(PlayDialogue(scene4Audio[3])); //archangel congrats
         yield return StartCoroutine(PlayDialogue(scene4Audio[4])); //archangel play in garden

@@ -36,7 +36,7 @@ public class ColorTempChange : UnityEngine.MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
         float _speed = ControllerInputHandler.instance.speed; // input 0 to 1 value
         float speedcoef = ((_speed - speedLowBound) / (speedUpBound - speedLowBound)); //speed coeficient
         source.volume = _speed;

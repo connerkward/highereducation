@@ -13,7 +13,7 @@ public class WeatherParticleController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         if (weather.isPlaying) {
             var lifetimeColor = weather.colorOverLifetime;
             float speed = ControllerInputHandler.instance.speed;
