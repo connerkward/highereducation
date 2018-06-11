@@ -246,7 +246,7 @@ public class SceneController : MonoBehaviour {
         animObj.scene4Credits[0].gameObject.SetActive(true);
         animObj.scene4Credits[0].Play();
         // creditscam
-        animObj.scene4Credits[1].Play();
+
 
     }
 
