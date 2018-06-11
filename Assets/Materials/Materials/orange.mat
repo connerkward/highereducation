@@ -56,7 +56,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AO: 0
-    - _BaseLight: 0.363
+    - _BaseLight: 0.479
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -76,7 +76,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.6858864, b: 0.52205884, a: 1}
+    - _Color: {r: 0.41911763, g: 0.31177178, b: 0.25578502, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}

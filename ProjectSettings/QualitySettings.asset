@@ -40,4 +40,5 @@ QualitySettings:
     - BlackBerry
     - WP8
     - Windows Store Apps
-  m_PerPlatformDefaultQuality: {}
+  m_PerPlatformDefaultQuality:
+    Standalone: 0
