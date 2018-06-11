@@ -7,7 +7,7 @@ using UnityEngine.Playables;
 
 public class SceneController : MonoBehaviour {
     private AudioSource source;
-    public GameObject rainShield;
+    public GameObject rainShield,rainShield1;
     public AudioSource introMusic;
     private AudioClip[] scene1Audio;
     private AudioClip[] scene3Audio;
@@ -34,6 +34,7 @@ public class SceneController : MonoBehaviour {
     private void Awake() {
         instance = this;
         rainShield.SetActive(false);
+        rainShield1.SetActive(false);
         QualitySettings.vSyncCount = 0;
         LoadAudioAssets();
     }
@@ -241,10 +242,11 @@ public class SceneController : MonoBehaviour {
         yield return new WaitForSeconds(3);
         yield return StartCoroutine(PlayDialogue(scene4Audio[1]));
         yield return StartCoroutine(PlayDialogue(scene4Audio[2])); //thankyou dad
-        rainShield.SetActive(false);
+        
         yield return new WaitForSeconds(3);
-
+        rainShield.SetActive(false);
         animObj.scene4AmandaPd[5].gameObject.SetActive(false);
+        rainShield1.SetActive(true);
         animObj.scene4AmandaPd[6].gameObject.SetActive(true);
         animObj.scene4AmandaPd[6].Play(); //amanda sits in the garden
         yield return StartCoroutine(PlayDialogue(scene4Audio[3])); //archangel congrats

@@ -31,12 +31,13 @@ public class walkScript2 : MonoBehaviour {
         //transform.position = Vector3.Lerp(start, end, fracJourney);
         if (transform.position.x > destX )
         {
-            transform.Translate(Time.deltaTime, 0, 0);
+            transform.Translate(2*Time.deltaTime, 0, 0);
             //transform.Translate(0, Time.deltaTime, 0, Space.World);
         }
+        transform.eulerAngles = new Vector3(0.0f, -461.2f, 0.0f);
         if (transform.position.z > destZ)
         {
-            transform.Translate(0, 0, Time.deltaTime);
+            transform.Translate(0, 0, 2*Time.deltaTime);
         }
     }
 }
