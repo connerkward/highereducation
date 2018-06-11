@@ -93,11 +93,12 @@ public class SceneController : MonoBehaviour {
 
     IEnumerator IntroDialogue()
     {
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        //yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return StartCoroutine(PlayDialogue(scene1Audio[0]));
         yield return StartCoroutine(PlayDialogue(scene1Audio[1]));
     }
     IEnumerator Scene1Events() {
+        animObj.scene4Credits[1].gameObject.SetActive(false);
         ControllerInputHandler.instance.allowInput = false;
         introMusic.Play();
         //Amanda sleeping animation
@@ -144,13 +145,8 @@ public class SceneController : MonoBehaviour {
         yield return StartCoroutine(PlayDialogue(scene3Audio[0]));
         yield return new WaitForSeconds(3);
         // powerball
-        animObj.scene3pPowerball[0].gameObject.SetActive(true);
-        animObj.scene3pPowerball[0].Play();
-
-
-
-
-
+        //animObj.scene3pPowerball[0].gameObject.SetActive(true);
+        //animObj.scene3pPowerball[0].Play();
 
         //animation - flower grows
         Debug.Log("bloom");
@@ -246,8 +242,7 @@ public class SceneController : MonoBehaviour {
         animObj.scene4Credits[0].gameObject.SetActive(true);
         animObj.scene4Credits[0].Play();
         // creditscam
-
-
+        animObj.scene4Credits[1].gameObject.SetActive(true);
     }
 
     IEnumerator PlayDialogue(AudioClip clip) {
