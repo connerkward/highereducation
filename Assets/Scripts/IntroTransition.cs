@@ -26,6 +26,7 @@ public class IntroTransition : MonoBehaviour {
     }
 
     IEnumerator IntroFade() {
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         float timer = 0;
         Color c = overlayImage.color;
         overlayImage.enabled = true;
