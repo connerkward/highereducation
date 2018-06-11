@@ -12788,7 +12788,7 @@ GameObject:
   - component: {fileID: 1228329871}
   - component: {fileID: 1228329870}
   m_Layer: 0
-  m_Name: Moving Camera
+  m_Name: credits camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
