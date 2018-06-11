@@ -199,6 +199,7 @@ public class SceneController : MonoBehaviour {
         animObj.scene4AmandaPd[0].gameObject.SetActive(false);
         yield return StartCoroutine(AmandaWalk());
         //amanda tries to open door
+        StartCoroutine(PlayDialogue(sfx[3]));
         animObj.scene4AmandaPd[2].gameObject.SetActive(true);
         animObj.scene4AmandaPd[2].Play();
         yield return new WaitForSeconds((float)animObj.scene4AmandaPd[2].duration);
