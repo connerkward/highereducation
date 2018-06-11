@@ -39,6 +39,13 @@ public class SceneController : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
+    private void FixedUpdate() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            PlayerPrefs.SetInt("sceneNo", 0);
+            SceneManager.LoadScene("Intro");
+        }
+    }
+
     private void OnEnable() {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -81,6 +88,7 @@ public class SceneController : MonoBehaviour {
 
     IEnumerator IntroDialogue()
     {
+        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
         yield return StartCoroutine(PlayDialogue(scene1Audio[0]));
         yield return StartCoroutine(PlayDialogue(scene1Audio[1]));
     }
