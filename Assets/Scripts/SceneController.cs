@@ -12,6 +12,7 @@ public class SceneController : MonoBehaviour {
     private AudioClip[] scene1Audio;
     private AudioClip[] scene3Audio;
     private AudioClip[] scene4Audio;
+    private AudioClip[] sfx;
     private AnimationObjects animObj;
 
     public float delay;
@@ -75,6 +76,7 @@ public class SceneController : MonoBehaviour {
         scene1Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene1");
         scene3Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene3");
         scene4Audio = Resources.LoadAll<AudioClip>("Audio/Recordings/scene4");
+        sfx = Resources.LoadAll<AudioClip>("Audio/sfx/garden");
     }
 
     IEnumerator IntroDialogue()
@@ -133,6 +135,7 @@ public class SceneController : MonoBehaviour {
         animObj.scene3BloomPd[0].transform.parent.gameObject.SetActive(true);
         animObj.scene3BloomPd[0].Play(); //yellow flowers
         animObj.scene3BloomPd[1].Play(); //pink roses
+        yield return StartCoroutine(PlayDialogue(sfx[0]));
         animObj.scene3AmandaPd[1].Pause();
         
         yield return new WaitForSeconds((float)animObj.scene3BloomPd[1].duration);
@@ -185,12 +188,14 @@ public class SceneController : MonoBehaviour {
         if (ControllerInputHandler.instance.speed < 0.5) {
             Debug.Log("Harmony Door");
             animObj.scene4DoorPd[0].gameObject.SetActive(true);
+            yield return StartCoroutine(PlayDialogue(sfx[1]));
             animObj.scene4DoorPd[0].Play();
             yield return new WaitForSeconds((float)animObj.scene4DoorPd[0].duration);
         } else {
             Debug.Log("Chaos Door");
             animObj.scene4DoorPd[0].gameObject.SetActive(false);
             animObj.scene4DoorPd[1].gameObject.SetActive(true);
+            yield return StartCoroutine(PlayDialogue(sfx[2]));
             animObj.scene4DoorPd[1].Play();
             yield return new WaitForSeconds((float)animObj.scene4DoorPd[1].duration);
         }
