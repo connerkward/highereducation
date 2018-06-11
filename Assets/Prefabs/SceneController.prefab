@@ -615,6 +615,7 @@ MonoBehaviour:
   overlayImage: {fileID: 0}
   transitionTime: 2
   clouds: {fileID: 198949346647846204}
+  leaves: {fileID: 198310426751910036}
   skipToScene3: 1
 --- !u!114 &114166891277459550
 MonoBehaviour:
@@ -1014,7 +1015,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 950894394
+  randomSeed: 330119573
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -1410,7 +1411,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 1
-    maxNumParticles: 1000
+    maxNumParticles: 500
     size3D: 0
     rotation3D: 0
     gravityModifier:

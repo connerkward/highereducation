@@ -7,6 +7,7 @@ using UnityEngine.Playables;
 
 public class SceneController : MonoBehaviour {
     private AudioSource source;
+    public GameObject rainShield;
     public AudioSource introMusic;
     private AudioClip[] scene1Audio;
     private AudioClip[] scene3Audio;
@@ -19,12 +20,14 @@ public class SceneController : MonoBehaviour {
     public float transitionTime;
     private Weather_Controller weatherController;
     public ParticleSystem clouds;
+    public ParticleSystem leaves;
     public bool skipToScene3;
     public static SceneController instance;
     // Use this for initialization
 
     private void Awake() {
         instance = this;
+        rainShield.SetActive(false);
         LoadAudioAssets();
     }
     public float GetDuration(int index) {
@@ -147,7 +150,7 @@ public class SceneController : MonoBehaviour {
         yield return StartCoroutine(PlayDialogue(scene3Audio[1]));
         yield return new WaitForSeconds(2);
         //animation - wind blows
-
+        leaves.Play();
 
 
         animObj.scene3AmandaPd[2].gameObject.SetActive(false);
@@ -199,8 +202,10 @@ public class SceneController : MonoBehaviour {
         yield return new WaitForSeconds((float)animObj.scene4AmandaPd[4].duration);
 
         //rain shield appears
+        rainShield.SetActive(true);
         animObj.scene4AmandaPd[4].gameObject.SetActive(false);
         animObj.scene4AmandaPd[5].gameObject.SetActive(true); //amanda smile
+        rainShield.SetActive(false);
         animObj.scene4AmandaPd[5].Play();
         yield return new WaitForSeconds(3);
         yield return StartCoroutine(PlayDialogue(scene4Audio[1]));
