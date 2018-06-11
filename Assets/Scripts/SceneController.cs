@@ -24,6 +24,11 @@ public class SceneController : MonoBehaviour {
     public ParticleSystem leaves;
     public bool skipToScene3;
     public static SceneController instance;
+
+    public GameObject powerball;
+    public GameObject credits;
+    public GameObject creditsCam;
+
     // Use this for initialization
 
     private void Awake() {
@@ -129,6 +134,14 @@ public class SceneController : MonoBehaviour {
         yield return new WaitForSeconds(5);
         yield return StartCoroutine(PlayDialogue(scene3Audio[0]));
         yield return new WaitForSeconds(3);
+        // powerball
+        animObj.scene3pPowerball[0].Play();
+
+
+
+
+
+
         //animation - flower grows
         Debug.Log("bloom");
         animObj.scene3BloomPd[0].transform.parent.gameObject.SetActive(true);
@@ -218,6 +231,12 @@ public class SceneController : MonoBehaviour {
         yield return new WaitForSeconds(3);
         yield return StartCoroutine(PlayDialogue(scene4Audio[3])); //archangel congrats
         yield return StartCoroutine(PlayDialogue(scene4Audio[4])); //archangel play in garden
+        yield return new WaitForSeconds(3);
+        // credits
+        animObj.scene4Credits[0].Play();
+        // creditscam
+
+
     }
 
     IEnumerator PlayDialogue(AudioClip clip) {

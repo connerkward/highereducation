@@ -10,4 +10,7 @@ public class AnimationObjects : MonoBehaviour {
     public List<PlayableDirector> scene3AmandaPd;
     public List<PlayableDirector> scene4DoorPd;
     public List<PlayableDirector> scene4AmandaPd;
+
+    public List<PlayableDirector> scene3pPowerball;
+    public List<PlayableDirector> scene4Credits;
 }
