@@ -63,7 +63,7 @@ public class ControllerInputHandler : MonoBehaviour {
 
     private void UpdateIndicator() {
         if (indicator) {
-            int width = 875;
+            int width = Screen.width / 2;
             indicator.anchoredPosition = new Vector2(width * speed - width / 2, indicator.anchoredPosition.y);
         }
     }

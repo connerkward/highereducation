@@ -28,6 +28,7 @@ public class SceneController : MonoBehaviour {
     private void Awake() {
         instance = this;
         rainShield.SetActive(false);
+        QualitySettings.vSyncCount = 0;
         LoadAudioAssets();
     }
     public float GetDuration(int index) {
