@@ -205,19 +205,20 @@ public class SceneController : MonoBehaviour {
 
         // door opens
         yield return new WaitForSeconds(4);
-        animObj.scene4DoorPd[2].gameObject.SetActive(false);
+        
         if (ControllerInputHandler.instance.speed < 0.5) {
             Debug.Log("Harmony Door");
+            animObj.scene4DoorPd[2].gameObject.SetActive(false);
             animObj.scene4DoorPd[0].gameObject.SetActive(true);
             yield return StartCoroutine(PlayDialogue(sfx[1]));
-            animObj.scene4DoorPd[0].Play();
+            //animObj.scene4DoorPd[0].Play();
             yield return new WaitForSeconds((float)animObj.scene4DoorPd[0].duration);
         } else {
             Debug.Log("Chaos Door");
-            //animObj.scene4DoorPd[0].gameObject.SetActive(false);
+            animObj.scene4DoorPd[2].gameObject.SetActive(false);
             animObj.scene4DoorPd[1].gameObject.SetActive(true);
             yield return StartCoroutine(PlayDialogue(sfx[2]));
-            animObj.scene4DoorPd[1].Play();
+            //animObj.scene4DoorPd[1].Play();
             yield return new WaitForSeconds((float)animObj.scene4DoorPd[1].duration);
         }
 

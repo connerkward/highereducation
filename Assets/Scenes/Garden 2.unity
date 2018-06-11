@@ -14139,7 +14139,8 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: ae185430f87eb8e48b1ae0fd4aec5422, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: ae185430f87eb8e48b1ae0fd4aec5422, type: 3}
   m_IsPrefabParent: 0
 --- !u!1 &838902714 stripped
@@ -14154,13 +14155,13 @@ PlayableDirector:
   m_GameObject: {fileID: 838902714}
   m_Enabled: 0
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: b9d08b2cb84c6544e94cd9545c4f0f03, type: 2}
+  m_PlayableAsset: {fileID: 0}
   m_InitialState: 0
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 114459339086865820, guid: b9d08b2cb84c6544e94cd9545c4f0f03, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 838902714}
   m_ExposedReferences:
     m_References: []
@@ -25456,7 +25457,7 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 114459339086865820, guid: b9d08b2cb84c6544e94cd9545c4f0f03, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 1283965914}
   m_ExposedReferences:
     m_References: []
